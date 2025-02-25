@@ -18,6 +18,7 @@
           type="text"
           placeholder="Ej. Juan Perez"
           name="nombreCompleto"
+          required
         >
         <!-- br - break - salto de línea -->
         <br />
@@ -27,6 +28,7 @@
           type="number"
           placeholder="Ej.28"
           name="edad"
+          min="18"
         >
         <br />
         <label for="input-email">Email</label>
@@ -35,6 +37,7 @@
           id="input-email"
           placeholder="Ej. user@gmail.com"
           name="correo"
+          minlength="20"
         >
         <br />
         <label for="input-pass">Contraseña</label>
@@ -86,6 +89,14 @@
           <option>UX/UI</option>
           <option>Diseño</option>
         </datalist>
+        <!-- acciones -->
+        <hr/>
+        <button type="reset">
+          Limpiar formulario
+        </button>
+        <button type="submit">
+          Enviar
+        </button>
       </form>
     </main>
   </body>
