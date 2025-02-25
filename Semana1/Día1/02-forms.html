@@ -63,6 +63,29 @@
         <label for="interes-Java">Java</label>
         <input type="checkbox" id="interes-dev-ops">
         <label for="interes-dev-ops">dev-ops</label>
+        <!-- hr - horizontal rule -->
+        <hr />
+        <label for="input-ciudad">Ciudad</label>
+        <select id="input-ciudad">
+          <option>Lima</option>
+          <option>Arequipa</option>
+          <option>Trujillo</option>
+          <option selected disabled>Elije una ciudad...</option>
+          <option>Ica</option>
+        </select>
+        <br />
+        <label for="input-especialidad">Indica la especialidad</label>
+        <input id="input-especialidad" list="especialidades">
+
+        <datalist id="especialidades">
+          <option>Redes</option>
+          <option>Electrónica</option>
+          <option>Software</option>
+          <option>Negocios</option>
+          <option>Gestión</option>
+          <option>UX/UI</option>
+          <option>Diseño</option>
+        </datalist>
       </form>
     </main>
   </body>
