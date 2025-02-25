@@ -49,6 +49,43 @@
         </ul>
       </article>
     </main>
+    <section>
+      <h2>Datos</h2>
+      <table border="1">
+        <thead>
+          <!-- tr - table row - fila -->
+          <tr>
+            <!-- cabecera columna -->
+            <th>Programas</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- td - table data -->
+            <td>Desarrollo web con Java</td>
+            <td>Lorem ipsum dolor sit amet.</td>
+            <!-- rowspan recibe un número para indicar cuantes filas va a tomar -->
+            <td rowspan="2">Software</td>
+          </tr>
+          <tr>
+            <td>Desarrollo web con Python</td>
+            <td>Lorem ipsum dolor sit.</td>
+            <!-- si una fila superior tiene un rowspan a partir de 2, las demás se verán desplazadas -->
+            <!-- <td>Software</td> -->
+          </tr>
+          <tr>
+            <td>Marketing con IA</td>
+            <td>Lorem ipsum dolor sit amet</td>
+            <td>Marketing</td>
+          </tr>
+          <tr>
+            <td colspan="3">Contactar a: 98675867512</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
     <footer>
       <h3>Información de contacto</h3>
       <p>Contáctanos por diferentes medios</p>
