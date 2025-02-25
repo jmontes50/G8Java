@@ -1,0 +1,18 @@
+/* selector etiqueta */
+h1 {
+  color: red;
+  background: blue;
+}
+
+/* #nombredelId */
+#primero{
+  font-weight: bold;
+  color:darkgreen;
+}
+
+/* .nombreclase */
+.seccion {
+  font-family: Arial;
+  color: purple;
+}
+
