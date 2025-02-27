@@ -49,3 +49,31 @@ span ~ p {
 .texto div {
   border:1px solid blue;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border:1px solid gray;
+}
+
+/* pseudoclases */
+/* selector:pseudoclase */
+
+tr:nth-of-type(4){
+  color:blueviolet;
+}
+
+tr:nth-of-type(odd){
+  background-color: deepskyblue;
+}
+
+tr:nth-of-type(even){
+  background-color: gold;
+}
+
+tr:hover{
+  background-color: cyan;
+  cursor: pointer;
+}
