@@ -1,0 +1,47 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.comentarios {
+  background-color: cyan;
+  /* display: none; */
+}
+
+/* la mayoria de elementos por defecto traen un display:block */
+p {
+  display: block;
+}
+
+.parrafo1{
+  width: 200px;
+  background:skyblue;
+}
+
+.parrafo2{
+  width: 180px;
+  background:steelblue;
+}
+
+.parrafo3{
+  width: 120px;
+  background:darkslateblue;
+  color: white;
+}
+
+span {
+  /* el contenido que pueda acomordarse a los costados de este elemento (otros inline) se acomodaran a ese elemento tldr, se ponen uno al costado del otro */
+  /* su tamaño no depende de los valores que indiquemos, dependen del contenido que tengan */
+  display:inline;
+  width: 800px;
+  border:2px solid red;
+}
+
+/* puedo utilizar la , como un Y */
+label, input, button {
+  /* se van a colocar uno al costado del otro */
+  display: inline-block;
+  width:75px;
+  border:2px solid skyblue;
+}
