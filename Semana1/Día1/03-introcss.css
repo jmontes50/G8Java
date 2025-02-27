@@ -16,3 +16,36 @@ h1 {
   color: purple;
 }
 
+section {
+  border:2px solid red;
+}
+
+.importante {
+  background: yellow;
+}
+
+main {
+  text-decoration: underline;
+}
+
+/* Operador */
+/* cuando hay un espacio se refiere a todos los li que sean hijos de ul */
+ul li {
+  font-style: italic;
+  color: blue;
+}
+
+/* a los elementos li que sean hijos inmediatos de un ul */
+ul > li {
+  color: green;
+  font-weight: bold;
+}
+/* combinador de hermanos, se usa con la virgulilla ~ , en este caso afectará a los p hnos que esten por debajo de algún span */
+span ~ p {
+  color: steelblue;
+  font-weight: bold;
+}
+
+.texto div {
+  border:1px solid blue;
+}
