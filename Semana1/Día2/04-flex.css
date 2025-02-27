@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* temporal */
+  border: 2px solid red;
+}
+
+.caja {
+  background-color: orange;
+  height: 120px;
+  width: 120px;
+}
