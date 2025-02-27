@@ -1,0 +1,19 @@
+/* reset CSS */
+/* selector universal * */
+* {
+  margin:0;
+  padding:0;
+  /* para que los tamaños engloben el borde, el padding y el propio contenido, indicaremos que sea border-box */
+  box-sizing: border-box;
+}
+
+header {
+  border: 3px solid blue;
+}
+
+h1 {
+  margin:20px;
+  padding:10px;
+  border:4px solid red;
+  width: 400px;
+}
