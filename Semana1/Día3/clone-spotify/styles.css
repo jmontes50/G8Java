@@ -50,6 +50,7 @@ main {
 }
 
 .explore-all {
+  /* crece todo es espacio que tengas libre */
   flex-grow: 1;
 }
 
