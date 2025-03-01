@@ -37,4 +37,40 @@
 body {
   background-color: var(--secondary-color-01);
   color: var(--secondary-color-04);
+  font-family: "Outfit", Arial, sans-serif;
+}
+
+main {
+  padding: 24px 16px;
+  background-color: var(--secondary-color-02);
+  border-radius: 20px;
+  margin:10px;
+}
+
+.explore-all-title {
+  margin-bottom: 20px;
+}
+
+.explore-all-boxes {
+  display: grid;
+  gap:20px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+}
+
+.explore-all-box {
+  padding:20px;
+  border-radius: 10px;
+  height: 250px;
+  background-color: gray;
+  position: relative;
+  overflow: hidden;
+}
+
+.box-genre-img {
+  width: 180px;
+  position: absolute;
+  top:75px;
+  /* left: 200px; */
+  right: -40px;
+  transform: rotate(25deg);
 }
