@@ -1,0 +1,41 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+header {
+  padding:20px;
+  font-family: Arial;
+  font-size:18px;
+  color:red;
+}
+
+p {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* @media <medio-dispositivo> and (condicional) {
+  selectores {
+    ...y demás propiedades de css para aplicar
+  }
+} */
+
+@media screen and (width >= 992px) {
+  header {
+    color: blue;
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (width <= 400px) {
+  header {
+    color: green;
+    font-size: 16px;
+  }
+}
