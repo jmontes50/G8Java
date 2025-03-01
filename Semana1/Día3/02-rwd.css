@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 32px;
+}
+
 header {
   padding:20px;
   font-family: Arial;
@@ -11,9 +15,18 @@ header {
   color:red;
 }
 
+main {
+  font-size: 1rem;
+}
+
 p {
-  padding: 10px;
-  font-size: 14px;
+  padding: 0.9em;
+  /* em es el valor mas cercano */
+  /* rem es el valor mas lejano, del html */
+  font-size: 0.75em;
+}
+span{
+  font-size:32px;
 }
 
 /* @media <medio-dispositivo> and (condicional) {
