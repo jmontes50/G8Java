@@ -45,6 +45,12 @@ main {
   background-color: var(--secondary-color-02);
   border-radius: 20px;
   margin:10px;
+  display: flex;
+  gap: 20px;
+}
+
+.explore-all {
+  flex-grow: 1;
 }
 
 .explore-all-title {
@@ -126,4 +132,38 @@ main {
 
 .explore-all-box:nth-of-type(12) {
   background-color: var(--genre-color01);
+}
+
+/* --------------------------- */
+/* menu-left */
+
+.menu-left{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--secondary-color-02);
+}
+
+.box-icon, .box-playlist {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.box-icon {
+  display: grid;
+  place-items: center;
+}
+
+.box-icon i {
+  font-size:20px;
+}
+
+.box-playlist {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.img-menu-playlist {
+  width: 100%;
 }
