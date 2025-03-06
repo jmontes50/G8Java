@@ -38,3 +38,43 @@ console.log(timestampHastaNavidad)
 let diasHastaNavidad = timestampHastaNavidad / 1000 / 60 / 60 / 24;
 
 console.log(diasHastaNavidad);
+
+// ----------------------------------------------------
+
+// métodos de array
+let frutas = ["Kiwi", "Naranja", "Manzana", "Piña"];
+
+//iterar en un arreglo y ejecutar la función que le indiquemos item x item
+frutas.forEach(function(item, indice, arreglo) {
+    console.log("item:",item);
+    console.log("indice:",indice);
+    console.log("arr original:", arreglo);
+})
+
+//map - transformar
+let frutasMayus = frutas.map((item, indice) => {
+    return `${item.toUpperCase()} - ${indice}`
+})
+
+let precios = [20, 30, 50, 40, 100, 22];
+
+let posiblesCompras = precios.filter((num) => {
+    return num <= 45;
+})
+
+console.log(posiblesCompras);
+
+let edades = [20, 25, 18, 34, 40, 29, 45, 23];
+
+// console.log(edades.sort()); //métodos que modifican el arreglo original
+
+console.log(edades.toSorted());
+
+console.log(edades);
+
+//reduce
+let sumaEdades = edades.reduce((acumulador, edad) => {
+    return acumulador + edad;
+})
+
+console.log(sumaEdades)
