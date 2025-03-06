@@ -33,4 +33,4 @@ ciudades.shift();
 console.log(ciudades);
 
 //cantidad de items en el arreglo
-console.log(ciudades.length)
+console.log(ciudades.length);
