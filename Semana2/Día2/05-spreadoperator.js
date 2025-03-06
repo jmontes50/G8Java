@@ -43,3 +43,20 @@ charmander2.salud = 60;
 console.log("charmander2:", charmander2);
 
 console.log("charmander:", charmander);
+
+//-------------------------------
+//spread operator en arrays
+
+const productos = ["Café", "Té", "Chocolate", "Pastel"];
+
+const copiaProductos = [...productos, "Jugo de Naranja"];
+
+console.table(productos)
+
+console.table(copiaProductos);
+
+const souvenirs = ["Iman", "Camiseta", "Gorro", "Postal"];
+
+const catalogo = [...productos, ...souvenirs];
+
+console.table(catalogo);
