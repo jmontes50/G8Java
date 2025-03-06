@@ -30,3 +30,18 @@ function multiplicacion (a, b) {
   return a * b;
 }
 console.log(ejecutarOperacion(multiplicacion, 2, 9));
+
+//funciones flecha, sintaxis más corta y moderna
+
+// let division = (a, b) => {
+//   return a / b
+// }
+//
+let division = (a, b) => a / b;
+
+console.log(division(100000, 4));
+
+let saludo = nombre => `Hola ${nombre}`;
+
+console.log(saludo("Jorge"));
+
