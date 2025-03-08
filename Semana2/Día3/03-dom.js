@@ -64,3 +64,5 @@ console.log(img);
 
 //appendChild para ahrehar como último elemento
 footer.appendChild(img);
+
+footer.classList.add("importante");
