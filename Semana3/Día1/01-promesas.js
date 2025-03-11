@@ -33,12 +33,29 @@ const buscarUsuarioPromesa = () => new Promise((resolve, reject) => {
   }, 3000);
 })
 
+const registrarEvento = () => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // resolve("Usuario registrado en evento");
+    reject("No se pudo registrar al evento");
+  }, 2000);
+})
+
 buscarUsuarioPromesa()
 //.then obtendrá el resultado positivo
 .then((result) => {
   console.log(result);
+  console.log("Fin de la ejecución positiva ")
+  //el encadenamiento de promesas se resumen en retornar otra promesa
+  return registrarEvento();
+})
+.then((resultEvento) => {
+  console.log(resultEvento);
 })
 //catch obtendrá el resultado negativo
 .catch((error) => {
   console.log(error)
+  console.log("Fin de la ejecución negativa ")
+})
+.finally(() => {
+  console.log("Fin de la ejecución en general ")
 })
