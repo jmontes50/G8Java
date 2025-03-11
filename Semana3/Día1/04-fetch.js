@@ -22,7 +22,8 @@ const config = {
     //
     body: JSON.stringify(user),
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        // "Authorization": `Bearer ${clave}`
     }
 }
 
