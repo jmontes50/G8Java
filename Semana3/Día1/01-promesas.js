@@ -50,7 +50,9 @@ buscarUsuarioPromesa()
 })
 .then((resultEvento) => {
   console.log(resultEvento);
+  //return nuevaPromesa();
 })
+//.then(() => {....})
 //catch obtendrá el resultado negativo
 .catch((error) => {
   console.log(error)
