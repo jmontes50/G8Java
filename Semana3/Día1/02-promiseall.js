@@ -21,6 +21,7 @@ const pro4 = () =>
 
 const arrPromises = [pro1(), pro2(), pro3(), pro4()];
 
+//Promise.all espera que todo se resuelva de forma positiva
 // Promise.all(arrPromises)
 // .then((result) => {
 //   console.log(result);
@@ -29,6 +30,7 @@ const arrPromises = [pro1(), pro2(), pro3(), pro4()];
 //   console.log(err)
 // });
 
+//Promise.AllSettled genera un arreglo de objetos donde detalla si fue rechazado o resuelto correctamente
 Promise.allSettled(arrPromises)
 .then((result) => {
   console.table(result);
@@ -37,3 +39,5 @@ Promise.allSettled(arrPromises)
   console.log(err)
 });
 
+//Toma un arreglo de Promesas y la primera en resolverse es la que tomará en su then
+// Promise.race(arrPromesas)
