@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Boton from "./Boton";
+import Mostrar from "./Mostrar";
 
 const App = () => {
   // const [nombreEstado, funcionEstado] = useState(valorInicial);
@@ -20,7 +22,9 @@ const App = () => {
   return (
     <>
     <h1>App</h1>
-    <h3>Contador: {contador}</h3>
+    {/* <h3>Contador: {contador}</h3> */}
+    <Mostrar contador={contador} />
+    <Boton texto={"Aumentar"} ejecuta={incrementar} />
     <button onClick={incrementar}>
       Incrementar
     </button>
