@@ -1,3 +1,5 @@
+import Info from "./Info";
+
 // const Parrafo = (props) => {
 //   console.table(props)
 //   return (
@@ -7,7 +9,7 @@
 
 const Parrafo = ({texto, fecha}) => {
   return (
-    <p>{texto} - {fecha}</p>
+    <p>{texto} - <Info fecha={fecha} /></p>
   )
 }
 
