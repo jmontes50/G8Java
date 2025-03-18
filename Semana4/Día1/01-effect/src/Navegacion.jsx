@@ -9,6 +9,9 @@ const Navegacion = () => {
       <li>
         <Link to="/textos">Textos</Link>
       </li>
+      <li>
+        <Link to="/detalle/audifonos">Detalle</Link>
+      </li>
     </ul>
   );
 };
