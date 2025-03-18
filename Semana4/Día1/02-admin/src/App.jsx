@@ -1,7 +1,14 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashboardView from "./views/DashboardView";
 
 const App = () => {
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <div>App</div>
+      <Routes>
+        <Route path='/' element={<DashboardView />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

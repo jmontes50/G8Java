@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+/* para agrear clases especificas pero manteniendo el uso de tw toca utilizar las directivas @layer y @apply */
+@layer components{
+  .btn {
+    @apply px-4 py-2 rounded-md
+  }
+
+  .btn-black {
+    @apply bg-black text-white hover:bg-slate-800;
+  }
+
+  /* .container {
+    @apply max-w-full
+  } */
+}
