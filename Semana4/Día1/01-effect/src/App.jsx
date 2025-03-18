@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   console.log("1. estoy en la función")
@@ -18,21 +19,25 @@ const App = () => {
   },[])
 
   return (
-    <div>
-      <h1>App</h1>
-      {console.log("2. estoy en el jsx/return")}
-      
-      {/* {console.log(users)} */}
-      {/* renderizado condicional, mediante un operador ternario */}
-      {mostrar ? <h3>Lista de Usuarios</h3> : null}
-      <ul>
-        {/* renderizado de listas */}
-        {/* {users.map((item, index) => {
-          return (<li key={index}>{item.first_name}</li>);
-        })} */}
-        {users.map((item) => (<li key={item.id}>{item.first_name}</li>))}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <div>
+        <h1>App</h1>
+        {console.log("2. estoy en el jsx/return")}
+        
+        {/* {console.log(users)} */}
+        {/* renderizado condicional, mediante un operador ternario */}
+        {mostrar ? <h3>Lista de Usuarios</h3> : null}
+        <ul>
+          {/* renderizado de listas */}
+          {/* {users.map((item, index) => {
+            return (<li key={index}>{item.first_name}</li>);
+          })} */}
+          {users.map((item) => (<li key={item.id}>{item.first_name}</li>))}
+        </ul>
+      </div>
+        </Routes>
+    </BrowserRouter>
   )
 }
 
