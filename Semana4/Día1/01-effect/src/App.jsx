@@ -5,6 +5,8 @@ const App = () => {
 
   const [users, setUsers] = useState([]);
 
+  const mostrar = true;
+
   useEffect(() => {
     console.log("3. estoy en el useEffect");
     fetch('https://reqres.in/api/users?page=2')
@@ -17,11 +19,14 @@ const App = () => {
 
   return (
     <div>
-      App
+      <h1>App</h1>
       {console.log("2. estoy en el jsx/return")}
-      {/* renderizado de listas */}
+      
       {/* {console.log(users)} */}
+      {/* renderizado condicional, mediante un operador ternario */}
+      {mostrar ? <h3>Lista de Usuarios</h3> : null}
       <ul>
+        {/* renderizado de listas */}
         {/* {users.map((item, index) => {
           return (<li key={index}>{item.first_name}</li>);
         })} */}
