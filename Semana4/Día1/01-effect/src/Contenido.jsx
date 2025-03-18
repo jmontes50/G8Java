@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 
 const Contenido = () => {
   console.log("1. estoy en la función");
-
   const [users, setUsers] = useState([]);
-
   const mostrar = true;
 
   useEffect(() => {
@@ -16,7 +14,7 @@ const Contenido = () => {
         setUsers(datos.data);
       });
   }, []);
-  
+
   return (
     <div>
       {console.log("2. estoy en el jsx/return")}

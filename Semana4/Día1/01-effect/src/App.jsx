@@ -1,42 +1,20 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Contenido from "./Contenido";
+import Info from "./Info";
 
 const App = () => {
-  console.log("1. estoy en la función")
-
-  const [users, setUsers] = useState([]);
-
-  const mostrar = true;
-
-  useEffect(() => {
-    console.log("3. estoy en el useEffect");
-    fetch('https://reqres.in/api/users?page=2')
-    .then((res) => res.json())
-    .then((datos => {
-      // console.log(datos)
-      setUsers(datos.data);
-    }));
-  },[])
-
+ 
   return (
+    // BrowserRouter funciona como contexto para las rutas
     <BrowserRouter>
+      <h1>App</h1>
+      {/* Routes envuelve las rutas, solamente pueden ir rutas dentro */}
       <Routes>
-      <div>
-        <h1>App</h1>
-        {console.log("2. estoy en el jsx/return")}
-        
-        {/* {console.log(users)} */}
-        {/* renderizado condicional, mediante un operador ternario */}
-        {mostrar ? <h3>Lista de Usuarios</h3> : null}
-        <ul>
-          {/* renderizado de listas */}
-          {/* {users.map((item, index) => {
-            return (<li key={index}>{item.first_name}</li>);
-          })} */}
-          {users.map((item) => (<li key={item.id}>{item.first_name}</li>))}
-        </ul>
-      </div>
-        </Routes>
+        {/* Route es cada ruta, necesita path y element */}
+        <Route path='/' element={<Contenido />} />
+        <Route path='/textos' element={<Info />} />
+      </Routes>
     </BrowserRouter>
   )
 }
