@@ -26,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     console.log("Ejecutandooooo!!!!")
-  }, [])
+  }, [contador])
 
   return (
     <>
