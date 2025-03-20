@@ -1,3 +1,5 @@
+//Este componente no se utiliza, es para mostrar componentes controlados
+
 import { useState } from "react";
 
 const CreateProductView = () => {
