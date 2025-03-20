@@ -13,7 +13,7 @@ const TableData = (props) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => (
+        {data.map((item) => ( 
           <tr key={item.id}>
             {headers.map((head, i) => (
               // brackets notation obj.prop obj['prop']

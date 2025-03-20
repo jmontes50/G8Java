@@ -30,8 +30,8 @@ const DashboardView = () => {
   ];
 
   return (
-    <div>
-      <h2>Dashboard View</h2>
+    <div className="container-block">
+      <h2 className="pb-6">Dashboard View</h2>
       <TableData data={products} headers={headsProducts} />
     </div>
   );
