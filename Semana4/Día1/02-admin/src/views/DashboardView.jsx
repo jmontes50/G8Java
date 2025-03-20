@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { requestProducts } from "../services/productService";
+import TableData from "../components/TableData";
 
 const DashboardView = () => {
   const [products, setProducts] = useState([]);
@@ -15,11 +16,12 @@ const DashboardView = () => {
       }
     }
     getProducts();
-  });
+  }, []);
 
   return <div>
     <h2>Dashboard View</h2>
-    <table className="border-collapse border border-gray-400">
+    <TableData data={ products }/>
+    {/* <table className="border-collapse border border-gray-400">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -34,7 +36,7 @@ const DashboardView = () => {
           </tr>
         ))}
       </tbody>
-    </table>
+    </table> */}
   </div>;
 };
 
