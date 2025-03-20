@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import DashboardView from "./views/DashboardView";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div>App</div>
+      <Navbar />
       <Routes>
         <Route path='/' element={<DashboardView />} />
       </Routes>
