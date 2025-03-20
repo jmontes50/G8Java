@@ -12,32 +12,29 @@ const DashboardView = () => {
         // console.log(productsObtained);
         setProducts(productsObtained);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     getProducts();
   }, []);
 
-  return <div>
-    <h2>Dashboard View</h2>
-    <TableData data={ products }/>
-    {/* <table className="border-collapse border border-gray-400">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Precio</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((prod) => (
-          <tr key={prod.id}>
-            <td>{prod.nombre}</td>
-            <td>{prod.precio}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table> */}
-  </div>;
+  const headsProducts = [
+    { name: "nombre", label: "Nombre" },
+    {
+      name: "descripcion",
+      label: "Descripción",
+      format: (value) => `${value.slice(0, 120)} ...`,
+    },
+    { name: "cantidad", label: "Stock" },
+    { name: "precio", label: "Precio", format: (value) => `S/ ${value}` },
+  ];
+
+  return (
+    <div>
+      <h2>Dashboard View</h2>
+      <TableData data={products} headers={headsProducts} />
+    </div>
+  );
 };
 
 export default DashboardView;
