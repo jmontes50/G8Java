@@ -31,8 +31,13 @@ const CreateProductView = () => {
     { name: "estrellas", label: "Estrellas", type: "number" },
   ];
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(product);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       { inputs.map((item, i) => (
         <Input
           key={i}
@@ -43,22 +48,8 @@ const CreateProductView = () => {
           handleInput={handleInput}
         />
       ))}
-      {/* <input
-        type="text"
-        placeholder="Type here"
-        className="input"
-        value={product.nombre}
-        onChange={handleInput}
-        name="nombre"
-      />
-      <input
-        type="text"
-        placeholder="Type here"
-        className="input"
-        value={product.descripcion}
-        onChange={handleInput}
-        name="descripcion"
-      /> */}
+      {/* <button className="btn btn-soft btn-accent" type="button">Guardar</button> */}
+      <button className="btn btn-soft btn-accent" type="submit">Guardar</button>
     </form>
   );
 };

@@ -14,6 +14,17 @@ const requestProducts = async () => {
     }
 }
 
+const requestCreateProduct = async (newProduct) => {
+  try {
+    const response = await axios.post('https://json-server-vercel-eosin-tau.vercel.app/products', newProduct);
+    console.log(response.status);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export {
-  requestProducts
+  requestProducts,
+  requestCreateProduct
 }
