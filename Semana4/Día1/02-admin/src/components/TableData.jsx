@@ -6,7 +6,7 @@ const TableData = (props) => {
       <thead>
         <tr>
           {headers.map((item, i) => (
-            <th key={i} className="border border-gray-300 p-1">
+            <th key={i} className="border border-gray-300 p-1 prose">
               {item.label}
             </th>
           ))}
@@ -17,7 +17,7 @@ const TableData = (props) => {
           <tr key={item.id}>
             {headers.map((head, i) => (
               // brackets notation obj.prop obj['prop']
-              <td key={i} className="border border-gray-300 p-1">
+              <td key={i} className="border border-gray-300 p-1 prose">
                 {/* preguntamos la propiedad format existe, V, aplica la transformación, si no, directamente coloca el dato */}
                 { head.format ? head.format(item[head.name]) : item[head.name] }
               </td>

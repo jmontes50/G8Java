@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* para agrear clases especificas pero manteniendo el uso de tw toca utilizar las directivas @layer y @apply */
 @layer components {
