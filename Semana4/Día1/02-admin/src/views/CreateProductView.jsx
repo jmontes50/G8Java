@@ -2,7 +2,7 @@
 
 const CreateProductView = () => {
   return (
-    <div>CreateProductView</div>
+    <input type="text" placeholder="Type here" className="input" />
   )
 }
 
