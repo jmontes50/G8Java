@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "../components/Input";
+import { requestCreateProduct } from "../services/productService";
 
 const CreateProductView = () => {
   const [product, setProduct] = useState({
@@ -11,7 +12,9 @@ const CreateProductView = () => {
     precio_oferta: 0,
     cantidad: 0,
     estrellas: 1,
-    // "categoryId": 1
+    //imagen y categoryId estan con información temporal
+    imagen:"https://picsum.photos/500",
+    categoryId: 1
   });
 
   //componentes controlados, amarrar el value de un input a un estado, pero al estar amarrado tenemos que gestionarlo para actualizar el estado en c/cambio
@@ -31,9 +34,15 @@ const CreateProductView = () => {
     { name: "estrellas", label: "Estrellas", type: "number" },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(product);
+    // console.log(product);
+    try {
+      const res = await requestCreateProduct(product);
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
