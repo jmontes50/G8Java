@@ -22,6 +22,7 @@ const requestCreateProduct = async (newProduct) => {
       "https://json-server-vercel-eosin-tau.vercel.app/products",
       newProduct
     );
+    console.log(response.status)
     if (response.status === 201) {
       return response.data;
     } else {

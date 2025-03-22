@@ -1,6 +1,6 @@
 const TableData = (props) => {
   const { data, headers } = props;
-  console.log(data);
+  // console.log(data);
   return (
     <table className="border-collapse border border-gray-300 w-full">
       <thead>
