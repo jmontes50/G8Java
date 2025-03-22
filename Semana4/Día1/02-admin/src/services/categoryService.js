@@ -15,4 +15,4 @@ const requestCategories = async () => {
   }
 };
 
-export default requestCategories;
+export { requestCategories };
