@@ -20,12 +20,18 @@ const CreateProductView = () => {
 
   const [categories, setCategories] = useState([]);
 
+  const [image, setImage] = useState(null);
+
   //componentes controlados, amarrar el value de un input a un estado, pero al estar amarrado tenemos que gestionarlo para actualizar el estado en c/cambio
   const handleInput = (event) => {
     // console.log(event)
     // console.log(event.target.value);
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
+
+  const handleInputFile = (e) => {
+    console.log(e);
+  }
 
   const inputs = [
     { name: "nombre", label: "Nombre producto", type: "text" },
@@ -80,7 +86,7 @@ const CreateProductView = () => {
           handleInput={handleInput}
         />
       ))}
-
+      {/* select */}
       <div className="mb-3 p-2">
         <label className="block mb-1">Seleccione la categoría:</label>
         <select 
@@ -94,6 +100,17 @@ const CreateProductView = () => {
           ))}
         </select>
       </div>
+      {/* archivos */}
+      <div className="mb-3 p-2">
+        <label className="block mb-1" htmlFor="imagen-producto">Seleccione una imagen:</label>
+        <input 
+          type="file"
+          className="file-input w-full"
+          id="imagen-producto"
+          onChange={handleInputFile}
+        />
+      </div>
+
       {/* <button className="btn btn-soft btn-accent" type="button">Guardar</button> */}
       <button className="btn btn-soft btn-accent block mt-2" type="submit">
         Guardar
