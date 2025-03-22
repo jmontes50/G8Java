@@ -14,7 +14,7 @@ const Input = (
         placeholder={`Ingrese ${label}`}
         id={nameProp}
         name={nameProp}
-        className="input"
+        className="input w-full"
         onChange={handleInput}
         value={value[nameProp]}
       />

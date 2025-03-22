@@ -14,8 +14,8 @@ const CreateProductView = () => {
     cantidad: 0,
     estrellas: 1,
     //imagen y categoryId estan con información temporal
-    imagen:"https://picsum.photos/500",
-    categoryId: 1
+    imagen: "https://picsum.photos/500",
+    categoryId: 1,
   });
 
   const [categories, setCategories] = useState([]);
@@ -46,7 +46,14 @@ const CreateProductView = () => {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  const handleSelect = (e) => {
+    // console.log(value);
+    const categoryIdSelected = e.target.value; //id
+    //agregamos +categoryIdSelected 
+    setProduct({ ...product, categoryId: +categoryIdSelected });
+  };
 
   useEffect(() => {
     const getCategories = async () => {
@@ -57,14 +64,13 @@ const CreateProductView = () => {
       } catch (error) {
         console.log(error);
       }
-    }
-    getCategories()
-
-  }, [])
+    };
+    getCategories();
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
-      { inputs.map((item, i) => (
+    <form onSubmit={handleSubmit} className="container-block grid grid-cols-2">
+      {inputs.map((item, i) => (
         <Input
           key={i}
           value={product}
@@ -74,8 +80,24 @@ const CreateProductView = () => {
           handleInput={handleInput}
         />
       ))}
+
+      <div className="mb-3 p-2">
+        <label className="block mb-1">Seleccione la categoría:</label>
+        <select 
+          className="select w-full" 
+          onChange={handleSelect}
+        >
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.nombre}
+            </option>
+          ))}
+        </select>
+      </div>
       {/* <button className="btn btn-soft btn-accent" type="button">Guardar</button> */}
-      <button className="btn btn-soft btn-accent" type="submit">Guardar</button>
+      <button className="btn btn-soft btn-accent block mt-2" type="submit">
+        Guardar
+      </button>
     </form>
   );
 };
