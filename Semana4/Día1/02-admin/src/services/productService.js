@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const URL = import.meta.env.VITE_API_URL;
+
 const requestProducts = async () => {
   try {
     const response = await axios.get(
-      "https://json-server-vercel-eosin-tau.vercel.app/products"
+      `${URL}/products`
     );
     // console.log(response);
     if (response.status === 200) {
@@ -19,7 +21,7 @@ const requestProducts = async () => {
 const requestCreateProduct = async (newProduct) => {
   try {
     const response = await axios.post(
-      "https://json-server-vercel-eosin-tau.vercel.app/products",
+      `${URL}/products`,
       newProduct
     );
     console.log(response.status)
