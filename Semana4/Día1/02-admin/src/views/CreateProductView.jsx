@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Input from "../components/Input";
 import { requestCreateProduct } from "../services/productService";
 import { requestCategories } from "../services/categoryService";
+import { uploadFile } from "../services/supabaseService";
 
 const CreateProductView = () => {
   const [product, setProduct] = useState({
@@ -30,7 +31,9 @@ const CreateProductView = () => {
   };
 
   const handleInputFile = (e) => {
-    console.log(e);
+    // console.log(e.target.files[0]);
+    const newImage = e.target.files[0];
+    setImage(newImage);
   }
 
   const inputs = [
@@ -47,8 +50,9 @@ const CreateProductView = () => {
     e.preventDefault();
     // console.log(product);
     try {
-      const res = await requestCreateProduct(product);
-      console.log(res);
+      const resUpload = await uploadFile(image);
+      // const res = await requestCreateProduct(product);
+      // console.log(res);
     } catch (error) {
       console.error(error);
     }
