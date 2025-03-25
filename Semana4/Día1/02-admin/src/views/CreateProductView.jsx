@@ -31,7 +31,7 @@ const CreateProductView = () => {
   };
 
   const handleInputFile = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     const newImage = e.target.files[0];
     setImage(newImage);
   }
@@ -50,9 +50,12 @@ const CreateProductView = () => {
     e.preventDefault();
     // console.log(product);
     try {
-      const resUpload = await uploadFile(image);
-      // const res = await requestCreateProduct(product);
-      // console.log(res);
+      if(image){
+        const publicUrlUpload = await uploadFile(image);
+        product.imagen = publicUrlUpload;
+      }
+      const res = await requestCreateProduct(product);
+      console.log(res);
     } catch (error) {
       console.error(error);
     }
