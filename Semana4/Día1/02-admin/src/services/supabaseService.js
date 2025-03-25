@@ -18,7 +18,7 @@ const uploadFile = async (file) => {
     if(error){
       console.log(error);
     }else{
-      console.log("respuesta subida", data);
+      // console.log("respuesta subida", data);
       const fileUrlPublic = supabase.storage.from(BUCKET_NAME).getPublicUrl(data.path);
       // console.log({ fileUrlPublic });
       // console.log(fileUrlPublic.data.publicUrl);

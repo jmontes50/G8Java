@@ -3,6 +3,7 @@ import Input from "../components/Input";
 import { requestCreateProduct } from "../services/productService";
 import { requestCategories } from "../services/categoryService";
 import { uploadFile } from "../services/supabaseService";
+import Swal from "sweetalert2";
 
 const CreateProductView = () => {
   const [product, setProduct] = useState({
@@ -55,7 +56,12 @@ const CreateProductView = () => {
         product.imagen = publicUrlUpload;
       }
       const res = await requestCreateProduct(product);
-      console.log(res);
+      Swal.fire({
+        title: `${product.nombre} creado!`,
+        text: "El producto se creó exitosamente",
+        icon: "success"
+      })
+      // console.log(res);
     } catch (error) {
       console.error(error);
     }
