@@ -15,22 +15,35 @@ const TableData = (props) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => ( 
+        {data.map((item) => (
           <tr key={item.id}>
             {headers.map((head, i) => (
               // brackets notation obj.prop obj['prop']
-              <td key={i} className="border-t-2 border-gray-800 px-4 py-2 prose">
+              <td
+                key={i}
+                className="border-t-2 border-gray-800 px-4 py-2 prose"
+              >
                 {/* preguntamos la propiedad format existe, V, aplica la transformación, si no, directamente coloca el dato */}
-                { head.format ? head.format(item[head.name]) : item[head.name] }
+                {head.format ? head.format(item[head.name]) : item[head.name]}
               </td>
             ))}
-            {actions ? actions.map((act, i) => (
-              <td key={i} className="border-t-2 border-gray-800 px-4 py-2 prose">
-                <button className={`btn btn-${act.bgColor ? act.bgColor : 'neutral' } btn-sm`}>
-                  <i className={icons[act.icon]}></i>
-                </button>
-              </td>
-            )) : null}
+            {actions
+              ? actions.map((act, i) => (
+                  <td
+                    key={i}
+                    className="border-t-2 border-gray-800 px-4 py-2 prose"
+                  >
+                    <button
+                      className={`btn btn-${
+                        act.bgColor ? act.bgColor : "neutral"
+                      } btn-sm`}
+                      onClick={() => {act.action()}}
+                    >
+                      <i className={icons[act.icon]}></i>
+                    </button>
+                  </td>
+                ))
+              : null}
           </tr>
         ))}
       </tbody>
