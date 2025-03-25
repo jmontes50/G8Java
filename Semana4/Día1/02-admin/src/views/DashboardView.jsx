@@ -29,10 +29,20 @@ const DashboardView = () => {
     { name: "precio", label: "Precio", format: (value) => `S/ ${value}` },
   ];
 
+  const handleEdit = () => {
+    console.log("Editar!!!!");
+  };
+
+  const actionsTable = [{ name: "Editar", icon: "edit", action: handleEdit }];
+
   return (
     <div className="container-block">
       <h2 className="pb-6 prose">Dashboard View</h2>
-      <TableData data={products} headers={headsProducts} />
+      <TableData
+        data={products}
+        headers={headsProducts}
+        actions={actionsTable}
+      />
     </div>
   );
 };
