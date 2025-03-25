@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { requestProducts } from "../services/productService";
 import TableData from "../components/TableData";
 
 const DashboardView = () => {
   const [products, setProducts] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -29,8 +32,8 @@ const DashboardView = () => {
     { name: "precio", label: "Precio", format: (value) => `S/ ${value}` },
   ];
 
-  const handleEdit = () => {
-    console.log("Editar!!!!");
+  const handleEdit = (id) => {
+    navigate(`/editproduct/${id}`);
   };
 
   const actionsTable = [

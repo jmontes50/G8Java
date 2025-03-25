@@ -37,7 +37,9 @@ const TableData = (props) => {
                       className={`btn btn-${
                         act.bgColor ? act.bgColor : "neutral"
                       } btn-sm`}
-                      onClick={() => {act.action()}}
+                      onClick={() => {
+                        act.action(item.id);
+                      }}
                     >
                       <i className={icons[act.icon]}></i>
                     </button>
