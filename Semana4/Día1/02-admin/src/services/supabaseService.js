@@ -8,7 +8,8 @@ const FOLDER_NAME = "public";
 const uploadFile = async (file) => {
   
   try {
-    const extension = file.name.split(".")[1]; //.png .jpg
+    const originalName = file.name.split(".");
+    const extension = originalName[originalName.length - 1]; //.png .jpg
     // console.log({extension})
     const newFileName = `${uuidv4()}.${extension}`;
     // console.log({ newFileName });
@@ -17,9 +18,12 @@ const uploadFile = async (file) => {
     if(error){
       console.log(error);
     }else{
-      console.log(data);
+      console.log("respuesta subida", data);
+      const fileUrlPublic = supabase.storage.from(BUCKET_NAME).getPublicUrl(data.path);
+      // console.log({ fileUrlPublic });
+      // console.log(fileUrlPublic.data.publicUrl);
+      return fileUrlPublic.data.publicUrl; //urlPublica ya lista
     }
-
   } catch (error) {
     throw error;
   }
