@@ -26,7 +26,7 @@ const TableData = (props) => {
             ))}
             {actions ? actions.map((act, i) => (
               <td key={i} className="border-t-2 border-gray-800 px-4 py-2 prose">
-                <button>
+                <button className={`btn btn-${act.bgColor ? act.bgColor : 'neutral' } btn-sm`}>
                   <i className={icons[act.icon]}></i>
                 </button>
               </td>

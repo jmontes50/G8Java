@@ -33,7 +33,9 @@ const DashboardView = () => {
     console.log("Editar!!!!");
   };
 
-  const actionsTable = [{ name: "Editar", icon: "edit", action: handleEdit }];
+  const actionsTable = [
+    { name: "Editar", icon: "edit", action: handleEdit, bgColor: "warning" },
+  ];
 
   return (
     <div className="container-block">
