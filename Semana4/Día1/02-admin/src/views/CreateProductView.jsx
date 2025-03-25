@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import { requestCreateProduct } from "../services/productService";
 import { requestCategories } from "../services/categoryService";
@@ -23,6 +24,8 @@ const CreateProductView = () => {
   const [categories, setCategories] = useState([]);
 
   const [image, setImage] = useState(null);
+
+  const navigate = useNavigate();
 
   //componentes controlados, amarrar el value de un input a un estado, pero al estar amarrado tenemos que gestionarlo para actualizar el estado en c/cambio
   const handleInput = (event) => {
@@ -56,11 +59,13 @@ const CreateProductView = () => {
         product.imagen = publicUrlUpload;
       }
       const res = await requestCreateProduct(product);
-      Swal.fire({
+      const resSwal = await Swal.fire({
         title: `${product.nombre} creado!`,
         text: "El producto se creó exitosamente",
         icon: "success"
       })
+      // console.log("despues de Swal.fire", resSwal)
+      navigate('/');
       // console.log(res);
     } catch (error) {
       console.error(error);
