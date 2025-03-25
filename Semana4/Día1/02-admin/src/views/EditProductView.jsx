@@ -1,17 +1,27 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { requestProductById, requestUpdateProduct } from "../services/productService";
+import {
+  requestProductById,
+  requestUpdateProduct,
+} from "../services/productService";
 import Input from "../components/Input";
 import { uploadFile } from "../services/supabaseService";
 import { requestCategories } from "../services/categoryService";
 import Swal from "sweetalert2";
 
 const EditProductView = () => {
-  const [product, setProduct] = useState(null)
+  const [product, setProduct] = useState(null);
+  const [categories, setCategories] = useState([]);
+
   const { id } = useParams();
 
   const handleInput = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
+  };
+
+  const handleSelect = (e) => {
+    const categoryIdSelected = e.target.value; //id
+    setProduct({ ...product, categoryId: +categoryIdSelected });
   };
 
   const inputs = [
@@ -26,37 +36,60 @@ const EditProductView = () => {
 
   useEffect(() => {
     const getProductById = async () => {
-      console.log("pre")
       try {
         const prod = await requestProductById(id);
-        console.log("after requestById", prod)
         setProduct(prod);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
+
+    const getCategories = async () => {
+      try {
+        const data = await requestCategories();
+        setCategories(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getProductById();
-  },[])
+    getCategories();
+  }, []);
 
   return (
-    <form>
-      {!product ? <>
-        Espere por favor
-      </> : <>
-        {inputs.map((item, i) => (
-          <Input
-            key={i}
-            value={product}
-            nameProp={item.name}
-            label={item.label}
-            type={item.type}
-            handleInput={handleInput}
-          />
-        ))}
-      </>}
-      <h1>Hola</h1>
+    <form className="container-block grid grid-cols-2">
+      {!product ? (
+        <>Espere por favor</>
+      ) : (
+        <>
+          {inputs.map((item, i) => (
+            <Input
+              key={i}
+              value={product}
+              nameProp={item.name}
+              label={item.label}
+              type={item.type}
+              handleInput={handleInput}
+            />
+          ))}
+          <div className="mb-3 p-2">
+            <label className="block mb-1">Seleccione la categoría:</label>
+            <select className="select w-full" onChange={handleSelect}>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button className="btn btn-soft btn-accent block mt-2" type="submit">
+            Guardar
+          </button>
+        </>
+      )}
     </form>
-  )
-}
+  );
+};
 
-export default EditProductView
+export default EditProductView;
