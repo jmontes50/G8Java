@@ -31,7 +31,7 @@ const CreateProductView = () => {
   };
 
   const handleInputFile = (e) => {
-    // console.log(e.target.files[0]);
+    console.log(e.target.files[0]);
     const newImage = e.target.files[0];
     setImage(newImage);
   }
