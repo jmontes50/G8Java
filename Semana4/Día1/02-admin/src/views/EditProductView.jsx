@@ -17,9 +17,19 @@ const EditProductView = () => {
   //crear una referencia para useRef, para manejar el dialog
   const dialogRef = useRef(null);
 
+  console.log(dialogRef.current)
+
   //Al usar una referencia es necesario current para acceder las propiedades y métodos que comunmente utilizariamos
   const openDialog = () => dialogRef.current.showModal();
   const closeDialog = () => dialogRef.current.close();
+
+  //Lo mismo pero con Swal
+  const OpenDialogSwal = (imgUrl, imgAlt) => {
+    Swal.fire({
+      imageUrl:imgUrl,
+      imageAlt: imgAlt
+    })
+  }
 
   const { id } = useParams();
 
@@ -108,7 +118,8 @@ const EditProductView = () => {
                 <button
                   className="btn btn-soft btn-accent btn-sm"
                   type="button"
-                  onClick={openDialog}
+                  // onClick={openDialog}
+                  onClick={() => {OpenDialogSwal(product?.imagen, product?.nombre)}}
                 >
                   Ver imagen actual
                 </button>
