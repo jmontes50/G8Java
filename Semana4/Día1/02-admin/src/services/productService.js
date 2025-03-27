@@ -45,7 +45,7 @@ const requestProductById = async (id) => {
 
 const requestUpdateProduct = async (productUpdated) => {
   try {
-    const response = await axios.put(`${URL}/products/${id}`, productUpdated);
+    const response = await axios.put(`${URL}/products/${productUpdated.id}`, productUpdated);
     console.log(response.status);
     return response.data;
   } catch (error) {

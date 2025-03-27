@@ -17,7 +17,7 @@ const EditProductView = () => {
   //crear una referencia para useRef, para manejar el dialog
   const dialogRef = useRef(null);
 
-  console.log(dialogRef.current)
+  console.log(dialogRef.current);
 
   //Al usar una referencia es necesario current para acceder las propiedades y métodos que comunmente utilizariamos
   const openDialog = () => dialogRef.current.showModal();
@@ -26,10 +26,15 @@ const EditProductView = () => {
   //Lo mismo pero con Swal
   const OpenDialogSwal = (imgUrl, imgAlt) => {
     Swal.fire({
-      imageUrl:imgUrl,
-      imageAlt: imgAlt
-    })
-  }
+      imageUrl: imgUrl,
+      imageAlt: imgAlt,
+//       html: `<video controls>
+//   <source src="chrome.webm" type="video/webm">
+//   <source src="chrome.mp4" type="video/mp4">
+//   <p>Your browser cannot play the provided video file.</p>
+// </video>`,
+    });
+  };
 
   const { id } = useParams();
 
@@ -58,6 +63,28 @@ const EditProductView = () => {
     { name: "estrellas", label: "Estrellas", type: "number" },
   ];
 
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if(image){
+        const publicUrlUpload = await uploadFile(image);
+        product.imagen = publicUrlUpload;
+      }
+      await requestUpdateProduct(product);
+      //con Swal.fire funciona con una promesa, esperando la interacción del usuario
+      await Swal.fire({
+        title: `${product.nombre} actualizado!`,
+        text: "El producto se actualizó exitosamente",
+        icon: "success"
+      });
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     const getProductById = async () => {
       try {
@@ -83,7 +110,7 @@ const EditProductView = () => {
 
   return (
     <>
-      <form className="container-block grid grid-cols-2">
+      <form onSubmit={handleSubmit} className="container-block grid grid-cols-2">
         {!product ? (
           <>Espere por favor</>
         ) : (
@@ -119,7 +146,9 @@ const EditProductView = () => {
                   className="btn btn-soft btn-accent btn-sm"
                   type="button"
                   // onClick={openDialog}
-                  onClick={() => {OpenDialogSwal(product?.imagen, product?.nombre)}}
+                  onClick={() => {
+                    OpenDialogSwal(product?.imagen, product?.nombre);
+                  }}
                 >
                   Ver imagen actual
                 </button>
@@ -146,7 +175,7 @@ const EditProductView = () => {
         className="p-6 text-white rounded-xl shadow-xl w-[400px] absolute left-1/2 top-[100px] -translate-x-1/2"
       >
         <button
-          className="btn btn-soft btn-accent btn-sm ms-auto block" 
+          className="btn btn-soft btn-accent btn-sm ms-auto block"
           type="button"
           onClick={closeDialog}
         >
