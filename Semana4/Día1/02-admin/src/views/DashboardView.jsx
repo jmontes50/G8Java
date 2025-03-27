@@ -9,16 +9,17 @@ const DashboardView = () => {
 
   const navigate = useNavigate();
 
+  const getProducts = async () => {
+    try {
+      const productsObtained = await requestProducts();
+      // console.log(productsObtained);
+      setProducts(productsObtained);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const productsObtained = await requestProducts();
-        // console.log(productsObtained);
-        setProducts(productsObtained);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     getProducts();
   }, []);
 
@@ -53,11 +54,18 @@ const DashboardView = () => {
     // console.log(resultSwal)
     if(resultSwal.isConfirmed) {
       await requestDeleteProduct(id);
-      Swal.fire({
+      await Swal.fire({
         title: "Producto eliminado",
         text: "Se, elimino definitivamente",
         icon: "success",
       })
+      // opción 1 después de eliminar
+      const filterAfterDelete = products.filter((prod) => prod.id !== id)
+      console.table(filterAfterDelete)
+      setProducts(filterAfterDelete)
+
+      //opcion 2 después de eliminar, re obteniendo los productos otra vez
+      //await getProducts();
     }
   }
 

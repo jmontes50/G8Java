@@ -62,8 +62,13 @@ const requestDeleteProduct = async (id) => {
   // console.log(id)
   try {
     const response = await axios.delete(`${URL}/products/${id}`);
-    console.log(response.status);
-    return response.data;
+    // console.log(response.status);
+    if(response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error("Error en el código de estado");
+    }
+   
   } catch (error) {
     throw error;
   }
