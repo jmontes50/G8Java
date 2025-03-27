@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { requestProducts } from "../services/productService";
+import { requestProducts, requestDeleteProduct } from "../services/productService";
 import TableData from "../components/TableData";
+import Swal from "sweetalert2";
 
 const DashboardView = () => {
   const [products, setProducts] = useState([]);
@@ -36,8 +37,33 @@ const DashboardView = () => {
     navigate(`/editproduct/${id}`);
   };
 
+  const handleDelete = async (id) => {
+    // console.log("Eliminar!!!!");
+    const resultSwal = await Swal.fire({
+      title: "Desea eliminar el producto?",
+      text: "Esta acción es definitiva",
+      icon: "warning",
+      showConfirmButton: true,
+      confirmButtonText: "Si, eliminar",
+      confirmButtonColor: "red",
+      showCancelButton: true,
+      cancelButtonColor: "blue",
+      cancelButtonText: "No, cancelar"
+    })
+    // console.log(resultSwal)
+    if(resultSwal.isConfirmed) {
+      await requestDeleteProduct(id);
+      Swal.fire({
+        title: "Producto eliminado",
+        text: "Se, elimino definitivamente",
+        icon: "success",
+      })
+    }
+  }
+
   const actionsTable = [
     { name: "Editar", icon: "edit", action: handleEdit, bgColor: "warning" },
+    { name: "Eliminar", icon: "delete", action: handleDelete, bgColor: "danger"}
   ];
 
   return (
