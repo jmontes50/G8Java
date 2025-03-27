@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { requestProducts, requestDeleteProduct } from "../services/productService";
 import TableData from "../components/TableData";
+import BarStock from "../components/BarStock";
 import Swal from "sweetalert2";
 
 const DashboardView = () => {
@@ -77,6 +78,7 @@ const DashboardView = () => {
   return (
     <div className="container-block">
       <h2 className="pb-6 prose">Dashboard View</h2>
+      <BarStock data={products} />
       <TableData
         data={products}
         headers={headsProducts}
