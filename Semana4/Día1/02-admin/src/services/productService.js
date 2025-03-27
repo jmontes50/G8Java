@@ -33,7 +33,7 @@ const requestCreateProduct = async (newProduct) => {
 const requestProductById = async (id) => {
   try {
     const response = await axios.get(`${URL}/products/${id}`);
-    if ((response.status = 200)) {
+    if (response.status === 200) {
       return response.data;
     } else {
       throw new Error("Error en el código de estado");
@@ -46,8 +46,13 @@ const requestProductById = async (id) => {
 const requestUpdateProduct = async (productUpdated) => {
   try {
     const response = await axios.put(`${URL}/products/${productUpdated.id}`, productUpdated);
-    console.log(response.status);
-    return response.data;
+    // console.log(response.status);
+    if(response.status === 200){
+      return response.data;
+    } else {
+      throw new Error("Error en el código de estado");
+    }
+    
   } catch (error) {
     throw error;
   }
