@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   requestProductById,
@@ -12,6 +12,14 @@ import Swal from "sweetalert2";
 const EditProductView = () => {
   const [product, setProduct] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [image, setImage] = useState(null);
+
+  //crear una referencia para useRef, para manejar el dialog
+  const dialogRef = useRef(null);
+
+  //Al usar una referencia es necesario current para acceder las propiedades y métodos que comunmente utilizariamos
+  const openDialog = () => dialogRef.current.showModal();
+  const closeDialog = () => dialogRef.current.close();
 
   const { id } = useParams();
 
@@ -22,6 +30,12 @@ const EditProductView = () => {
   const handleSelect = (e) => {
     const categoryIdSelected = e.target.value; //id
     setProduct({ ...product, categoryId: +categoryIdSelected });
+  };
+
+  const handleInputFile = (e) => {
+    // console.log(e.target.files[0]);
+    const newImage = e.target.files[0];
+    setImage(newImage);
   };
 
   const inputs = [
@@ -58,37 +72,81 @@ const EditProductView = () => {
   }, []);
 
   return (
-    <form className="container-block grid grid-cols-2">
-      {!product ? (
-        <>Espere por favor</>
-      ) : (
-        <>
-          {inputs.map((item, i) => (
-            <Input
-              key={i}
-              value={product}
-              nameProp={item.name}
-              label={item.label}
-              type={item.type}
-              handleInput={handleInput}
-            />
-          ))}
-          <div className="mb-3 p-2">
-            <label className="block mb-1">Seleccione la categoría:</label>
-            <select className="select w-full" onChange={handleSelect}>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button className="btn btn-soft btn-accent block mt-2" type="submit">
-            Guardar
-          </button>
-        </>
-      )}
-    </form>
+    <>
+      <form className="container-block grid grid-cols-2">
+        {!product ? (
+          <>Espere por favor</>
+        ) : (
+          <>
+            {inputs.map((item, i) => (
+              <Input
+                key={i}
+                value={product}
+                nameProp={item.name}
+                label={item.label}
+                type={item.type}
+                handleInput={handleInput}
+              />
+            ))}
+            <div className="mb-3 p-2">
+              <label className="block mb-1">Seleccione la categoría:</label>
+              <select className="select w-full" onChange={handleSelect}>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* archivos */}
+            <div className="mb-3 p-2">
+              <div className="flex gap-4">
+                <label className="block mb-1" htmlFor="imagen-producto">
+                  Seleccione una imagen:
+                </label>
+                <button
+                  className="btn btn-soft btn-accent btn-sm"
+                  type="button"
+                  onClick={openDialog}
+                >
+                  Ver imagen actual
+                </button>
+              </div>
+              <input
+                type="file"
+                className="file-input w-full"
+                id="imagen-producto"
+                onChange={handleInputFile}
+              />
+            </div>
+
+            <button
+              className="btn btn-soft btn-accent block mt-2"
+              type="submit"
+            >
+              Guardar
+            </button>
+          </>
+        )}
+      </form>
+      <dialog
+        ref={dialogRef}
+        className="p-6 text-white rounded-xl shadow-xl w-[400px] absolute left-1/2 top-[100px] -translate-x-1/2"
+      >
+        <button
+          className="btn btn-soft btn-accent btn-sm ms-auto block" 
+          type="button"
+          onClick={closeDialog}
+        >
+          X
+        </button>
+        {/* objeto?.propiedad -> la propiedad existe?, en caso no existe el equivalente es undefined */}
+        {product?.imagen ? (
+          <img src={product.imagen} alt={product.nombre} className="w-full" />
+        ) : null}
+      </dialog>
+    </>
   );
 };
 
