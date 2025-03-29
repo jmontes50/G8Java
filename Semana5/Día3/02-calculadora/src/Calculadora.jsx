@@ -25,7 +25,15 @@ const Calculadora = () => {
       <button onClick={() => {dispatch({ type: "SUMA" })}}>
         Suma
       </button>
-      
+      <button onClick={() => {dispatch({ type: "RESTA" })}}>
+        Resta
+      </button>
+      <button onClick={() => {dispatch({ type: "MULTIPLICACION" })}}>
+        Multiplicar
+      </button>
+      <button onClick={() => {dispatch({ type: "DIVISION" })}}>
+        Dividir
+      </button>
     </div>
   )
 }

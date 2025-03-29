@@ -17,6 +17,24 @@ const calculatorReducer = (state, action) => {
       result: state.result + Number(state.input), 
       input: "" 
     };
+  } else if(action.type === "RESTA"){
+    return { 
+      ...state, 
+      result: state.result - Number(state.input), 
+      input: "" 
+    };
+  } else if(action.type === "MULTIPLICACION"){
+    return { 
+      ...state, 
+      result: state.result * Number(state.input), 
+      input: "" 
+    };
+  } else if(action.type === "DIVISION"){
+    return { 
+      ...state, 
+      result: state.result / Number(state.input), 
+      input: "" 
+    };
   } else if (action.type === "SET_INPUT") {
     return { ...state, input: action.payload };
   } else {
