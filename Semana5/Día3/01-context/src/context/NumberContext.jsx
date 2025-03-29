@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from "react";
 const NumberContext = createContext();
 
 const NumberContextProvider = ({ children }) => {
+  console.log("provider!!!")
   const [count, setCount] = useState(0);
 
   const incrementar = () => {
