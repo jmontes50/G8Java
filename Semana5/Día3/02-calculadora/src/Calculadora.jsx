@@ -15,12 +15,17 @@ const Calculadora = () => {
   return (
     <div>
       <h2>Calculadora</h2>
+      <h3>Resultado: {state.result}</h3>
       <input
         type="number"
         value={state.input}
         onChange={handleInput}
       />
-      <h3>Resultado: {state.result}</h3>
+      <br/>
+      <button onClick={() => {dispatch({ type: "SUMA" })}}>
+        Suma
+      </button>
+      
     </div>
   )
 }

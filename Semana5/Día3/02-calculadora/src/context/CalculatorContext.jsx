@@ -10,9 +10,13 @@ const initialState = {
 const calculatorReducer = (state, action) => {
   console.log("state", state);
   console.log("action", action);
-  
+
   if (action.type === "SUMA") {
-    return { ...state, result: state.result + Number(state.input), input: "" };
+    return { 
+      ...state, 
+      result: state.result + Number(state.input), 
+      input: "" 
+    };
   } else if (action.type === "SET_INPUT") {
     return { ...state, input: action.payload };
   } else {
