@@ -1,6 +1,13 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProductPage from "./modules/Products";
+
 const App = () => {
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ProductPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
