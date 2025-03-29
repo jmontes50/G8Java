@@ -3,7 +3,7 @@ import { NumberContext } from "./context/NumberContext";
 
 const Section = (props) => {
   // console.log(props);
-  const { hoy, pi } = useContext(NumberContext);
+  const { hoy, pi, incrementar } = useContext(NumberContext);
 
   console.log(hoy)
 
@@ -19,6 +19,10 @@ const Section = (props) => {
       <div>
         { props.children }
       </div>
+      <hr />
+      <button onClick={incrementar}>
+        Incrementar!
+      </button>
     </section>
   );
 };

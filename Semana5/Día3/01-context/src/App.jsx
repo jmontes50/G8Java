@@ -1,5 +1,6 @@
 import { NumberContextProvider } from "./context/NumberContext";
 import Section from "./Section";
+import Show from "./Show";
 
 const App = () => {
   return (
@@ -21,6 +22,8 @@ const App = () => {
           <button>Hola!</button>
         </Section>
       </div>
+      <hr />
+      <Show />
       {/* rutas */}
     </NumberContextProvider>
   );
