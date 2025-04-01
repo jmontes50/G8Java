@@ -1,5 +1,6 @@
 import useGetAxios from "../../hooks/useGetAxios";
 import ProductCard from "./components/ProductCard";
+import Loading from "../ui/components/Loading";
 
 const ProductPage = () => {
   const { data, loading, error } = useGetAxios(
@@ -13,7 +14,7 @@ const ProductPage = () => {
   }
 
   if(loading) {
-    return <p>Cargando...</p>
+    return <Loading />;
   }
 
   return (

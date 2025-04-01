@@ -24,7 +24,7 @@ const useGetAxios = (url) => {
     requestData();
   },[url])
 
-  return { data, loading }
+  return { data, loading, error };
 }
 
 export default useGetAxios;
