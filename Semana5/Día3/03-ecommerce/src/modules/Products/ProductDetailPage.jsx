@@ -13,11 +13,9 @@ const ProductDetailPage = () => {
       Ocurrio un error, actualice o contactesé con soporte
       </p>;
   }
-
   if(loading) {
     return <Loading />;
   }
-
   return (
     <div className="py-4 mx-auto container">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
@@ -25,9 +23,22 @@ const ProductDetailPage = () => {
           <img src={data.imagen} alt={data.nombre} />
         </div>
         <div className="my-2">
-          <h2 className="text-3xl font-semibold">
+          <h2 className="text-3xl font-semibold mb-5">
             {data.nombre}
           </h2>
+
+          <div className="mb-5 text-3xl">
+            <span className="me-2">
+              S/ {data.precio_oferta.toFixed(2)}
+            </span>
+            <span className="line-through text-slate-400">
+              S/ {data.precio.toFixed(2)}
+            </span>
+          </div>
+
+          <p className="mb-5">
+            {data.descripcion}
+          </p>
         </div>
       </div>
     </div>
