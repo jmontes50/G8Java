@@ -4,6 +4,7 @@ import axios from "axios";
 const useGetAxios = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const requestData = async () => {
@@ -16,7 +17,8 @@ const useGetAxios = (url) => {
           throw new Error("Error en el código de estado");
         }
       } catch (error) {
-        throw error;
+        setError(error);
+        setLoading(false);
       }
     }
     requestData();
