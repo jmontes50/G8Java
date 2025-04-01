@@ -1,9 +1,12 @@
 import { create } from "zustand";
+//para poder ver los cambios en redux devtools
+import { devtools } from 'zustand/middleware'
 
 //la función create de zustand va a necesitar una función, donde tendremos como parámetro 'set'
 //set es una función que nos permitira cambiar el store, con store piensen en estado
 
-const useThemeStore = create((set) => ({
+// const useThemeStore = create((set) => ({
+const useThemeStore = create(devtools((set) => ({
   //aquí directmente podemos indicar propiedades del estado y métodos que lo actualicen
   // theme: 'dark',
   theme: localStorage.getItem("tema") || 'dark',
@@ -20,6 +23,7 @@ const useThemeStore = create((set) => ({
       return { theme: newTheme }
     })
   }
-}))
+})))
+// }))
 
 export default useThemeStore;
