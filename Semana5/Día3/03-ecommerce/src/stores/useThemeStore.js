@@ -5,10 +5,12 @@ import { create } from "zustand";
 
 const useThemeStore = create((set) => ({
   //aquí directmente podemos indicar propiedades del estado y métodos que lo actualicen
-  theme: 'dark',
+  // theme: 'dark',
+  theme: localStorage.getItem("tema") || 'dark',
   changeTheme: () => {
     set((state) => {
       const newTheme = state.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem("tema", newTheme);
       return { theme: newTheme }
     })
   }
