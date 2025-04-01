@@ -9,8 +9,14 @@ const useThemeStore = create((set) => ({
   theme: localStorage.getItem("tema") || 'dark',
   changeTheme: () => {
     set((state) => {
+      //estamos preguntando que tema vamos a aplicar
       const newTheme = state.theme === 'dark' ? 'light' : 'dark';
+      //LS guardamos el tema en local Storage, para que este persistente
       localStorage.setItem("tema", newTheme);
+      //agregamos <html data-theme="tema"> al html usando JS puro
+      const html = document.querySelector("html");
+      html.setAttribute("data-theme", newTheme);
+      //cambiando el estado
       return { theme: newTheme }
     })
   }
