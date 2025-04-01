@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useGetAxios from "../../hooks/useGetAxios";
 import Loading from "../ui/components/Loading";
 import ButtonsQty from "../ui/components/ButtonsQty";
+import Stars from "../ui/components/Stars";
 
 const ProductDetailPage = () => {
 
@@ -27,6 +28,8 @@ const ProductDetailPage = () => {
           <h2 className="text-3xl font-semibold mb-5">
             {data.nombre}
           </h2>
+
+          <Stars rating={data.estrellas} />
 
           <div className="mb-5 text-3xl">
             <span className="me-2">
