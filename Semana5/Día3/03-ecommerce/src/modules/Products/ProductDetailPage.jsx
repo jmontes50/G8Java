@@ -57,7 +57,7 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <div className="py-4 mx-auto container">
+    <div className="py-4 mx-auto container max-w-7xl">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
         <div className="w-full max-h-[500px]">
           <img 
