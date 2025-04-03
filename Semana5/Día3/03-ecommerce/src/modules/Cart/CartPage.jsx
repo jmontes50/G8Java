@@ -29,9 +29,9 @@ const CartPage = () => {
               { cart ? cart.map((prod) => (
                 <tr key={prod.id} className="border-b-2">
                   <td className="px-6 py-4">{prod.nombre}</td>
-                  <td className="px-6 py-4">{prod.precio}</td>
+                  <td className="px-6 py-4">S/ {prod.precio.toFixed(2)}</td>
                   <td className="px-6 py-4">{prod.cantidad}</td>
-                  <td className="px-6 py-4">{prod.cantidad * prod.precio}</td>
+                  <td className="px-6 py-4">S/ {(prod.cantidad * prod.precio).toFixed(2)}</td>
                 </tr>
               )) : null}
             </tbody>
