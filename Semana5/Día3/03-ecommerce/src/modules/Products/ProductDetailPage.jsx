@@ -3,12 +3,19 @@ import useGetAxios from "../../hooks/useGetAxios";
 import Loading from "../ui/components/Loading";
 import ButtonsQty from "../ui/components/ButtonsQty";
 import Stars from "../ui/components/Stars";
+import useCartStore from "../../stores/useCartStore";
 
 const ProductDetailPage = () => {
 
   const { id } = useParams();
 
   const { data, loading, error } = useGetAxios(`https://json-server-vercel-eosin-tau.vercel.app/products/${id}`);
+
+  const { cart, addProductToCart } = useCartStore();
+
+  const handleClickAddCart = () => {
+    addProductToCart(data);
+  }
 
   if (error) {
     return <p>
@@ -18,6 +25,7 @@ const ProductDetailPage = () => {
   if(loading) {
     return <Loading />;
   }
+
   return (
     <div className="py-4 mx-auto container">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
@@ -45,7 +53,10 @@ const ProductDetailPage = () => {
           </p>
           <div className="flex gap-4">
             <ButtonsQty />
-            <button className="btn btn-accent btn-xl px-16">
+            <button 
+              className="btn btn-accent btn-xl px-16" 
+              onClick={handleClickAddCart}
+            >
               Añadir a Carrito
             </button>
           </div>
