@@ -5,6 +5,8 @@ const CartPage = () => {
 
   const total = cart.reduce((acum, item) => acum + (item.precio * item.qtyCart), 0);
 
+  const COSTO_DELIVERY = 5;
+
   return (
     <div className="px-4 py-10 mx-auto container max-w-7xl">
       <h2 className="text-3xl font-semibold mb-5">Checkout</h2>
@@ -44,6 +46,29 @@ const CartPage = () => {
           <div className="flex justify-between p-6 font-bold border-b-2">
             <span>Subtotal</span>
             <span>S/ { total.toFixed(2) }</span>
+          </div>
+          <div className="p-6 border-b-2">
+            <input
+              type="text"
+              placeholder="Ingrese el código de descuento"
+              className="p-4 border-2 border-black rounded-s-xl outline-none h-[60px]"
+            />
+            <button className="px-8 py-4 text-white bg-black rounded-e-xl h-[60px]">
+              Aplicar
+            </button>
+          </div>
+          <div className="flex justify-between text-sm p-6">
+            <span>Costo del delivery</span>
+            <span>S/ {COSTO_DELIVERY.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between p-6">
+            <span>Total</span>
+            <span>S/ {total + COSTO_DELIVERY}</span>
+          </div>
+          <div className="px-6 mb-6">
+            <button className="btn btn-neutral btn-xl w-full">
+              Realizar checkout
+            </button>
           </div>
         </div>
       </div>
