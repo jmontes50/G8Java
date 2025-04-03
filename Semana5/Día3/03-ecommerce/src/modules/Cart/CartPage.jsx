@@ -1,4 +1,5 @@
 import useCartStore from "../../stores/useCartStore";
+import ButtonsQty from "../ui/components/ButtonsQty";
 
 const CartPage = () => {
   const { cart } = useCartStore();
@@ -34,7 +35,10 @@ const CartPage = () => {
                 <tr key={prod.id} className="border-b-2">
                   <td className="px-6 py-4">{prod.nombre}</td>
                   <td className="px-6 py-4">S/ {prod.precio.toFixed(2)}</td>
-                  <td className="px-6 py-4">{prod.qtyCart}</td>
+                  {/* <td className="px-6 py-4">{prod.qtyCart}</td> */}
+                  <td className="px-6 py-4">
+                    <ButtonsQty qtyCart={prod.qtyCart} incrementQty={() => {}} incrementQty={() => {decrementQty}} />
+                  </td>
                   <td className="px-6 py-4">S/ {(prod.qtyCart * prod.precio).toFixed(2)}</td>
                 </tr>
               )) : null}
