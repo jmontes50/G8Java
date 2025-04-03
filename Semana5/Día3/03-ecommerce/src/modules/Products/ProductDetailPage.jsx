@@ -11,31 +11,41 @@ const ProductDetailPage = () => {
 
   const { id } = useParams();
 
-  const { data, loading, error } = useGetAxios(`https://json-server-vercel-eosin-tau.vercel.app/products/${id}`);
+  const { data, loading, error } = useGetAxios(
+    `https://json-server-vercel-eosin-tau.vercel.app/products/${id}`
+  );
 
   const { cart, addProductToCart } = useCartStore();
 
   const handleClickAddCart = () => {
     const productToCart = { ...data, qtyCart: qtyCart };
     addProductToCart(productToCart);
-  }
+  };
 
   const incrementQty = () => {
     if (qtyCart === data.cantidad) return;
     setQtyCart(qtyCart + 1);
-  }
+  };
 
   const decrementQty = () => {
     if (qtyCart === 1) return;
     setQtyCart(qtyCart - 1);
-  }
+  };
+
+  useEffect(() => {
+    if (cart) {
+      const numberId = Number(id);
+      const productExists = cart.find((item) => item.id === numberId);
+      if (productExists) {
+        setQtyCart(productExists.qtyCart);
+      }
+    }
+  }, [cart]);
 
   if (error) {
-    return <p>
-      Ocurrio un error, actualice o contactesé con soporte
-      </p>;
+    return <p>Ocurrio un error, actualice o contactesé con soporte</p>;
   }
-  if(loading) {
+  if (loading) {
     return <Loading />;
   }
 
@@ -46,32 +56,26 @@ const ProductDetailPage = () => {
           <img src={data.imagen} alt={data.nombre} />
         </div>
         <div className="my-2">
-          <h2 className="text-3xl font-semibold mb-5">
-            {data.nombre}
-          </h2>
+          <h2 className="text-3xl font-semibold mb-5">{data.nombre}</h2>
 
           <Stars rating={data.estrellas} />
 
           <div className="mb-5 text-3xl">
-            <span className="me-2">
-              S/ {data.precio_oferta.toFixed(2)}
-            </span>
+            <span className="me-2">S/ {data.precio_oferta.toFixed(2)}</span>
             <span className="line-through text-slate-400">
               S/ {data.precio.toFixed(2)}
             </span>
           </div>
 
-          <p className="mb-5">
-            {data.descripcion}
-          </p>
+          <p className="mb-5">{data.descripcion}</p>
           <div className="flex gap-4">
-            <ButtonsQty 
-              qtyCart={qtyCart} 
-              incrementQty={incrementQty} 
-              decrementQty={decrementQty} 
+            <ButtonsQty
+              qtyCart={qtyCart}
+              incrementQty={incrementQty}
+              decrementQty={decrementQty}
             />
-            <button 
-              className="btn btn-accent btn-xl px-16" 
+            <button
+              className="btn btn-accent btn-xl px-16"
               onClick={handleClickAddCart}
             >
               Añadir a Carrito
@@ -80,7 +84,7 @@ const ProductDetailPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetailPage
+export default ProductDetailPage;
