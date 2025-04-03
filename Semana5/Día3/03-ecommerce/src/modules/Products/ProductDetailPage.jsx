@@ -13,8 +13,11 @@ const ProductDetailPage = () => {
 
   const { cart, addProductToCart } = useCartStore();
 
+  console.log( {cart })
+
   const handleClickAddCart = () => {
-    addProductToCart(data);
+    const productToCart = { ...data, qtyCart: 1 };
+    addProductToCart(productToCart);
   }
 
   if (error) {
