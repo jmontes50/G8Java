@@ -21,7 +21,7 @@ const ProductDetailPage = () => {
 
   const { theme } = useThemeStore();
 
-  const notify = () => toast.success('Producto agregado!', { theme: theme }); //theme utiliza light y dark igual que el store del tema
+  const notify = () => toast.success("Producto agregado!", { theme: theme }); //theme utiliza light y dark igual que el store del tema
 
   const handleClickAddCart = () => {
     const productToCart = { ...data, qtyCart: qtyCart };
@@ -60,7 +60,11 @@ const ProductDetailPage = () => {
     <div className="py-4 mx-auto container">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
         <div className="w-full max-h-[500px]">
-          <img src={data.imagen} alt={data.nombre} />
+          <img 
+            className="object-cover w-full h-full"
+            src={data.imagen} 
+            alt={data.nombre} 
+          />
         </div>
         <div className="my-2">
           <h2 className="text-3xl font-semibold mb-5">{data.nombre}</h2>
@@ -89,6 +93,10 @@ const ProductDetailPage = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="pt-5 border-t-2 border-slate-300 mt-10">
+        <h4 className="mb-5 text-xl font-semibold">Detalles</h4>
+        <p className="whitespace-pre-wrap">{data.detalles} </p>
       </div>
     </div>
   );
