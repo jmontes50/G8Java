@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import useGetAxios from "../../hooks/useGetAxios";
 import Loading from "../ui/components/Loading";
 import ButtonsQty from "../ui/components/ButtonsQty";
 import Stars from "../ui/components/Stars";
 import useCartStore from "../../stores/useCartStore";
+import useThemeStore from "../../stores/useThemeStore";
 
 const ProductDetailPage = () => {
   const [qtyCart, setQtyCart] = useState(1);
@@ -17,9 +19,14 @@ const ProductDetailPage = () => {
 
   const { cart, addProductToCart } = useCartStore();
 
+  const { theme } = useThemeStore();
+
+  const notify = () => toast.success('Producto agregado!', { theme: theme }); //theme utiliza light y dark igual que el store del tema
+
   const handleClickAddCart = () => {
     const productToCart = { ...data, qtyCart: qtyCart };
     addProductToCart(productToCart);
+    notify();
   };
 
   const incrementQty = () => {
