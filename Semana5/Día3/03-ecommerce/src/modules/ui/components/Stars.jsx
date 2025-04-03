@@ -8,11 +8,12 @@ const Stars = ({ rating }) => {
       {currentStars.map((star, i) => (
         <i
           key={i}
-          className={`text-yellow-400 ${
+          className={`text-yellow-400 me-2 ${
             i < rating ? "fa-solid" : "fa-regular"
           } fa-star`}
         />
       ))}
+      <span className="text-sm">{rating.toFixed(1)}</span>
     </div>
   );
 };
