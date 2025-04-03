@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useGetAxios from "../../hooks/useGetAxios";
 import Loading from "../ui/components/Loading";
@@ -6,6 +7,7 @@ import Stars from "../ui/components/Stars";
 import useCartStore from "../../stores/useCartStore";
 
 const ProductDetailPage = () => {
+  const [qtyCart, setQtyCart] = useState(1);
 
   const { id } = useParams();
 
@@ -13,11 +15,19 @@ const ProductDetailPage = () => {
 
   const { cart, addProductToCart } = useCartStore();
 
-  console.log( {cart })
-
   const handleClickAddCart = () => {
-    const productToCart = { ...data, qtyCart: 1 };
+    const productToCart = { ...data, qtyCart: qtyCart };
     addProductToCart(productToCart);
+  }
+
+  const incrementQty = () => {
+    if (qtyCart === data.cantidad) return;
+    setQtyCart(qtyCart + 1);
+  }
+
+  const decrementQty = () => {
+    if (qtyCart === 1) return;
+    setQtyCart(qtyCart - 1);
   }
 
   if (error) {
@@ -55,7 +65,7 @@ const ProductDetailPage = () => {
             {data.descripcion}
           </p>
           <div className="flex gap-4">
-            <ButtonsQty />
+            <ButtonsQty qtyCart={qtyCart} incrementQty={incrementQty} decrementQty={decrementQty} />
             <button 
               className="btn btn-accent btn-xl px-16" 
               onClick={handleClickAddCart}
