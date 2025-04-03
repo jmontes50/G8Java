@@ -43,7 +43,12 @@ const ProductDetailPage = () => {
           <p className="mb-5">
             {data.descripcion}
           </p>
-          <ButtonsQty />
+          <div className="flex gap-4">
+            <ButtonsQty />
+            <button className="btn btn-accent btn-xl px-16">
+              Añadir a Carrito
+            </button>
+          </div>
         </div>
       </div>
     </div>
