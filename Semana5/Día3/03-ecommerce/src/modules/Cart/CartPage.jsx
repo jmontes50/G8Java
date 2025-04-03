@@ -37,7 +37,7 @@ const CartPage = () => {
                   <td className="px-6 py-4">S/ {prod.precio.toFixed(2)}</td>
                   {/* <td className="px-6 py-4">{prod.qtyCart}</td> */}
                   <td className="px-6 py-4">
-                    <ButtonsQty qtyCart={prod.qtyCart} incrementQty={() => {}} incrementQty={() => {decrementQty}} />
+                    <ButtonsQty qtyCart={prod.qtyCart} incrementQty={() => {}} decrementQty={() => {decrementQty}} />
                   </td>
                   <td className="px-6 py-4">S/ {(prod.qtyCart * prod.precio).toFixed(2)}</td>
                 </tr>
