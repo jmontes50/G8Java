@@ -65,7 +65,11 @@ const ProductDetailPage = () => {
             {data.descripcion}
           </p>
           <div className="flex gap-4">
-            <ButtonsQty qtyCart={qtyCart} incrementQty={incrementQty} decrementQty={decrementQty} />
+            <ButtonsQty 
+              qtyCart={qtyCart} 
+              incrementQty={incrementQty} 
+              decrementQty={decrementQty} 
+            />
             <button 
               className="btn btn-accent btn-xl px-16" 
               onClick={handleClickAddCart}
