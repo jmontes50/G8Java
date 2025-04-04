@@ -24,7 +24,7 @@ const useCartStore = create(devtools((set) => ({
           cart: cartTemp
         }
       }
-    });
+    }, false, "cart/addProductToCart");
   },
   changeQtyProduct: (product, newQty) => {
     set((state) => {
@@ -40,7 +40,7 @@ const useCartStore = create(devtools((set) => ({
         console.log("No se encontró el producto");
         return state
       }
-    })
+    }, false, "cart/changeQtyProduct");
   }
 })));
 

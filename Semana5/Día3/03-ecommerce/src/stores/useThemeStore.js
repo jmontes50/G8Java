@@ -21,7 +21,7 @@ const useThemeStore = create(devtools((set) => ({
       html.setAttribute("data-theme", newTheme);
       //cambiando el estado
       return { theme: newTheme }
-    })
+    }, false, "theme/changeTheme")
   }
 })))
 // }))
