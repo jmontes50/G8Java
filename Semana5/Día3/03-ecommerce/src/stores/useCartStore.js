@@ -1,20 +1,25 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
+import { getStorage, saveStorage } from "../utils/localStorage";
+
+const NAMEKEY = "cart";
 
 const useCartStore = create(devtools((set) => ({
-  cart: [],
+  cart: getStorage(NAMEKEY) || [],
   //product aparte de sus propiedades, va a llegar con una propiedad qtyCart
   addProductToCart: (product) => {
     set((state) => {
       const index = state.cart.findIndex((item) => item.id === product.id)
       if(index === -1 ){
         const changeCart = [...state.cart, product];
+        saveStorage(NAMEKEY, changeCart);
         return {
           cart: changeCart,
         };
       } else{
         const cartTemp = [...state.cart];
         cartTemp[index].qtyCart = product.qtyCart;
+        saveStorage(NAMEKEY, cartTemp);
         return {
           cart: cartTemp
         }
@@ -27,7 +32,7 @@ const useCartStore = create(devtools((set) => ({
       if(index > -1){
         const cartTemp = [...state.cart];
         cartTemp[index].qtyCart = newQty;
-
+        saveStorage(NAMEKEY, cartTemp);
         return {
           cart: cartTemp
         }
