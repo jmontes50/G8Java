@@ -2,11 +2,19 @@ import useCartStore from "../../stores/useCartStore";
 import ButtonsQty from "../ui/components/ButtonsQty";
 
 const CartPage = () => {
-  const { cart } = useCartStore();
+  const { cart, changeQtyProduct } = useCartStore();
 
   const total = cart.reduce((acum, item) => acum + (item.precio * item.qtyCart), 0);
 
   const COSTO_DELIVERY = 5;
+
+  const incrementQty = (product, qtyCart) => {
+    changeQtyProduct(product, qtyCart + 1);
+  }
+
+  const decrementQty = (product, qtyCart) => {
+    changeQtyProduct(product, qtyCart - 1);
+  }
 
   return (
     <div className="px-4 py-10 mx-auto container max-w-7xl">
@@ -37,7 +45,11 @@ const CartPage = () => {
                   <td className="px-6 py-4">S/ {prod.precio.toFixed(2)}</td>
                   {/* <td className="px-6 py-4">{prod.qtyCart}</td> */}
                   <td className="px-6 py-4">
-                    <ButtonsQty qtyCart={prod.qtyCart} incrementQty={() => {}} decrementQty={() => {decrementQty}} />
+                    <ButtonsQty 
+                      qtyCart={prod.qtyCart} 
+                      incrementQty={() => {incrementQty(prod, prod.qtyCart)}}
+                      decrementQty={() => {decrementQty(prod, prod.qtyCart)}} 
+                    />
                   </td>
                   <td className="px-6 py-4">S/ {(prod.qtyCart * prod.precio).toFixed(2)}</td>
                 </tr>

@@ -21,6 +21,22 @@ const useCartStore = create(devtools((set) => ({
       }
     });
   },
+  changeQtyProduct: (product, newQty) => {
+    set((state) => {
+      const index = state.cart.findIndex((item) => item.id === product.id)
+      if(index > -1){
+        const cartTemp = [...state.cart];
+        cartTemp[index].qtyCart = newQty;
+
+        return {
+          cart: cartTemp
+        }
+      } else {
+        console.log("No se encontró el producto");
+        return state
+      }
+    })
+  }
 })));
 
 export default useCartStore;
