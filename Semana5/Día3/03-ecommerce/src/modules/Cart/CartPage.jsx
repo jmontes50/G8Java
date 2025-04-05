@@ -1,7 +1,21 @@
+import { useState } from "react";
 import useCartStore from "../../stores/useCartStore";
 import ButtonsQty from "../ui/components/ButtonsQty";
 
 const CartPage = () => {
+  const [tabs, setTabs] = useState([
+    {
+      id: 1,
+      label: 'Carrito',
+      isSelected: true
+    },
+    {
+      id: 2,
+      label: 'Mis datos',
+      isSelected: false
+    }
+  ])
+        
   const { cart, changeQtyProduct } = useCartStore();
 
   const total = cart.reduce((acum, item) => acum + (item.precio * item.qtyCart), 0);
@@ -16,11 +30,39 @@ const CartPage = () => {
     changeQtyProduct(product, qtyCart - 1);
   }
 
+  const handleClickTab = (id) => {
+    const tabsTemp = [...tabs];
+    const changedTabs = tabsTemp.map((item) => {
+      if (item.id === id){
+        return {...item, isSelected: true}
+      }else{
+        return {...item, isSelected: false}
+      }
+    })
+    setTabs(changedTabs);
+  }
+
   return (
     <div className="px-4 py-10 mx-auto container max-w-7xl">
       <h2 className="text-3xl font-semibold mb-5">Checkout</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div className="col-span-2">
+
+          <div role="tablist" className="tabs tabs-border mb-4">
+            {/* <a role="tab" className="tab">Tab 1</a>
+            <a role="tab" className="tab tab-active">Tab 2</a> */}
+            {tabs.map((item) => (
+              <a 
+                key={item.id} 
+                role="tab" 
+                className={`tab ${item.isSelected ? "tab-active" : ""}`}
+                onClick={() => { handleClickTab(item.id) }}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
           <table className="w-full">
             <thead className="text-xs uppercase">
               <tr>

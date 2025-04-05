@@ -15,7 +15,7 @@ const PaginationProducts = ({totalPages, setPage}) => {
     arrButtons.push(joinItem)
   }
 
-  console.log({ arrButtons });
+  // console.log({ arrButtons });
 
   return (
     <div className="join">
