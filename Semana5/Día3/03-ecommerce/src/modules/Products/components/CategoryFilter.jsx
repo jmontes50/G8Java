@@ -1,25 +1,19 @@
-import useGetAxios from "../../../hooks/useGetAxios";
-import Loading from "../../ui/components/Loading";
+import { useEffect } from "react";
+import useCategoryStore from "../../../stores/useCategoryStore";
 
 const CategoryFilter = () => {
-  const { data, loading, error } = useGetAxios(
-    "https://json-server-vercel-eosin-tau.vercel.app/categories"
-  );
+  const { categories, categorySelected, setCategorySelected, requestCategories } = useCategoryStore();
 
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    <p>Error, vuelva a intentar y/ó comuniquese con soporte...</p>;
-  }
+  useEffect(() => {
+    requestCategories();
+  }, [])
 
   return (
     <div className="col-span-full">
       <details className="dropdown">
         <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-          {data
-            ? data.map((category) => (
+          {categories.length !== 0
+            ? categories.map((category) => (
                 <li key={category.id} className="mb-1">
                   <button className="btn btn-sm rounded">
                     {category.nombre}
