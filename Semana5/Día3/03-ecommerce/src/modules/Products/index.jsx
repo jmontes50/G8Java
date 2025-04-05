@@ -2,11 +2,17 @@ import useGetAxios from "../../hooks/useGetAxios";
 import ProductCard from "./components/ProductCard";
 import Loading from "../ui/components/Loading";
 import CategoryFilter from "./components/CategoryFilter";
+import useCategoryStore from "../../stores/useCategoryStore";
 
 const ProductPage = () => {
-  const { data, loading, error } = useGetAxios(
-    "https://json-server-vercel-eosin-tau.vercel.app/products"
-  );
+  
+  const { categorySelected } = useCategoryStore();
+  
+  const categoryParam = categorySelected ? `categoryId=${categorySelected.id}` : "";
+
+  const URL = `https://json-server-vercel-eosin-tau.vercel.app/products?${categoryParam}`
+
+  const { data, loading, error } = useGetAxios(URL);
 
   if (error) {
     return <p>

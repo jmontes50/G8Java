@@ -10,10 +10,10 @@ const CategoryFilter = () => {
   } = useCategoryStore();
 
   const handleSelect = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     const numberCategoryId = Number(e.target.value);
     const categoryFound = categories.find((item) => item.id === numberCategoryId);
-    console.log({ categoryFound });
+    // console.log({ categoryFound });
     setCategorySelected(categoryFound);
   }
 
@@ -24,7 +24,7 @@ const CategoryFilter = () => {
   return (
     <div className="col-span-full">
       <select className="select" onChange={handleSelect}>
-        <option disabled={true} selected={true} >Selecciona una categoria</option>
+        <option disabled={true}>Selecciona una categoria</option>
         {categories.length !== 0
           ? categories.map((category) => (
               <option key={category.id} value={category.id}>{category.nombre}</option>
