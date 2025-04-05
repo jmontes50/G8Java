@@ -2,27 +2,35 @@ import { useEffect } from "react";
 import useCategoryStore from "../../../stores/useCategoryStore";
 
 const CategoryFilter = () => {
-  const { categories, categorySelected, setCategorySelected, requestCategories } = useCategoryStore();
+  const {
+    categories,
+    categorySelected,
+    setCategorySelected,
+    requestCategories,
+  } = useCategoryStore();
+
+  const handleSelect = (e) => {
+    console.log(e.target.value);
+    const numberCategoryId = Number(e.target.value);
+    const categoryFound = categories.find((item) => item.id === numberCategoryId);
+    console.log({ categoryFound });
+    setCategorySelected(categoryFound);
+  }
 
   useEffect(() => {
     requestCategories();
-  }, [])
+  }, []);
 
   return (
     <div className="col-span-full">
-      <details className="dropdown">
-        <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-          {categories.length !== 0
-            ? categories.map((category) => (
-                <li key={category.id} className="mb-1">
-                  <button className="btn btn-sm rounded">
-                    {category.nombre}
-                  </button>
-                </li>
-              ))
-            : null}
-        </ul>
-      </details>
+      <select className="select" onChange={handleSelect}>
+        <option disabled={true} selected={true} >Selecciona una categoria</option>
+        {categories.length !== 0
+          ? categories.map((category) => (
+              <option key={category.id} value={category.id}>{category.nombre}</option>
+            ))
+          : null}
+      </select>
     </div>
   );
 };

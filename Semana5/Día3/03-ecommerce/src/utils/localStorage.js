@@ -1,6 +1,8 @@
 const saveStorage = (name, data) => {
     const JSONdata = JSON.stringify(data);
     localStorage.setItem(name, JSONdata);
+    //localStorage.delete(name)
+    //sessionStorage
 }
 
 const getStorage = (name) => {
