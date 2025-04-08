@@ -2,6 +2,7 @@ import { useState } from "react";
 import useCartStore from "../../stores/useCartStore";
 import ButtonsQty from "../ui/components/ButtonsQty";
 import { useForm } from "react-hook-form";
+import Map from "../ui/components/Map";
 
 const CartPage = () => {
   const [tabs, setTabs] = useState([
@@ -160,6 +161,8 @@ const CartPage = () => {
                   </p>
                 )}
               </fieldset>
+              {/* Mapa leaflet */}
+              <Map />
               <button className="btn btn-success">Confirmar</button>
             </form>
           </div>
