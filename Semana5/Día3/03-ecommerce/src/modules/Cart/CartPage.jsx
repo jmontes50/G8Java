@@ -63,41 +63,47 @@ const CartPage = () => {
             ))}
           </div>
 
-          <table className="w-full">
-            <thead className="text-xs uppercase">
-              <tr>
-                <th className="px-6 py-3 text-left">
-                  Producto
-                </th>
-                <th className="px-6 py-3 text-left">
-                  Precio Unit.
-                </th>
-                <th className="px-6 py-3 text-left">
-                  Cantidad
-                </th>
-                <th className="px-6 py-3 text-left">
-                  Sub-total
-                </th>
-              </tr>
-            </thead>
-            <tbody className="text-sm">
-              { cart ? cart.map((prod) => (
-                <tr key={prod.id} className="border-b-2">
-                  <td className="px-6 py-4">{prod.nombre}</td>
-                  <td className="px-6 py-4">S/ {prod.precio.toFixed(2)}</td>
-                  {/* <td className="px-6 py-4">{prod.qtyCart}</td> */}
-                  <td className="px-6 py-4">
-                    <ButtonsQty 
-                      qtyCart={prod.qtyCart} 
-                      incrementQty={() => {incrementQty(prod, prod.qtyCart)}}
-                      decrementQty={() => {decrementQty(prod, prod.qtyCart)}} 
-                    />
-                  </td>
-                  <td className="px-6 py-4">S/ {(prod.qtyCart * prod.precio).toFixed(2)}</td>
+          <div className={tabs[0].isSelected ? "block" : "hidden"}>
+            <table className="w-full">
+              <thead className="text-xs uppercase">
+                <tr>
+                  <th className="px-6 py-3 text-left">
+                    Producto
+                  </th>
+                  <th className="px-6 py-3 text-left">
+                    Precio Unit.
+                  </th>
+                  <th className="px-6 py-3 text-left">
+                    Cantidad
+                  </th>
+                  <th className="px-6 py-3 text-left">
+                    Sub-total
+                  </th>
                 </tr>
-              )) : null}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="text-sm">
+                { cart ? cart.map((prod) => (
+                  <tr key={prod.id} className="border-b-2">
+                    <td className="px-6 py-4">{prod.nombre}</td>
+                    <td className="px-6 py-4">S/ {prod.precio.toFixed(2)}</td>
+                    {/* <td className="px-6 py-4">{prod.qtyCart}</td> */}
+                    <td className="px-6 py-4">
+                      <ButtonsQty 
+                        qtyCart={prod.qtyCart} 
+                        incrementQty={() => {incrementQty(prod, prod.qtyCart)}}
+                        decrementQty={() => {decrementQty(prod, prod.qtyCart)}} 
+                      />
+                    </td>
+                    <td className="px-6 py-4">S/ {(prod.qtyCart * prod.precio).toFixed(2)}</td>
+                  </tr>
+                )) : null}
+              </tbody>
+            </table>
+          </div>
+          <div className={tabs[1].isSelected ? "block" : "hidden"}>
+            Contenido Hook forms
+          </div>
+
         </div>
         {/* descuento */}
         <div className="col-span-1 border-2">
