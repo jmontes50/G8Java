@@ -52,6 +52,10 @@ const CartPage = () => {
     setTabs(changedTabs);
   };
 
+  const handleConfirmForm = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="px-4 py-10 mx-auto container max-w-7xl">
       <h2 className="text-3xl font-semibold mb-5">Checkout</h2>
@@ -115,25 +119,48 @@ const CartPage = () => {
           </div>
           <div className={tabs[1].isSelected ? "block" : "hidden"}>
             <h3 className="text-lg font-semibold mb-3">Ingrese sus datos</h3>
-            <form onSubmit={handleSubmit()}>
+            <form onSubmit={handleSubmit(handleConfirmForm)}>
               <fieldset className="fieldset">
                 <legend className="fieldset-legend">
                   Nombres y Apellidos:
                 </legend>
-                <input 
+                <input
                   type="text"
                   className="input"
-                  placeholder="ej. Juan Perez" 
-                  {...register("fullname", { required:true })}
+                  placeholder="ej. Juan Perez"
+                  {...register("fullname", { required: true })}
                 />
-                {errors.fullname && (<p className="fieldset-label text-red-600">
-                  El campo es obligatorio.
-                </p>)}
-                
+                {errors.fullname && (
+                  <p className="fieldset-label text-red-600">
+                    El campo es obligatorio.
+                  </p>
+                )}
               </fieldset>
-              <button className="btn btn-success">
-                Confirmar
-              </button>
+              <fieldset className="fieldset">
+                <legend className="fieldset-legend">Dirección</legend>
+                <input
+                  type="text"
+                  placeholder="Av. Arenales"
+                  className="input"
+                  {...register("address", {
+                    required: "La dirección es obligatoria",
+                    minLength: {
+                      value: 8,
+                      message: "La dirección requiere al menos 8 letras",
+                    },
+                    maxLength: {
+                      value: 30,
+                      message: "La dirección no puede ser más de 30 letras",
+                    },
+                  })}
+                />
+                {errors.address && (
+                  <p className="field-label text-red-600">
+                    {errors.address.message}
+                  </p>
+                )}
+              </fieldset>
+              <button className="btn btn-success">Confirmar</button>
             </form>
           </div>
         </div>
