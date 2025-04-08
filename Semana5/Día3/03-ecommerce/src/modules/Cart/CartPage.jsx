@@ -126,7 +126,7 @@ const CartPage = () => {
                 </legend>
                 <input
                   type="text"
-                  className="input"
+                  className="input w-full"
                   placeholder="ej. Juan Perez"
                   {...register("fullname", { required: true })}
                 />
@@ -141,7 +141,7 @@ const CartPage = () => {
                 <input
                   type="text"
                   placeholder="Av. Arenales"
-                  className="input"
+                  className="input w-full"
                   {...register("address", {
                     required: "La dirección es obligatoria",
                     minLength: {
