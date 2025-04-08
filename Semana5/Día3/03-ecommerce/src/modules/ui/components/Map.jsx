@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   MapContainer,
   Marker,
@@ -8,6 +9,22 @@ import {
 } from "react-leaflet";
 
 const Map = () => {
+  const [positionMarker, setPositionMarker] = useState(null);
+
+  const MapActions = () => {
+    const map = useMapEvents({
+      click: (event) => {
+        const { lat, lng } = event.latlng;
+        setPositionMarker([lat, lng]);
+        map.flyTo([lat, lng]);
+      }
+    })
+
+    return <>
+      {positionMarker ? <Marker position={positionMarker} /> : null}
+    </>
+  }
+
   return (
     <div className="w-full border-2 rounded h-[450px] my-4">
       <MapContainer center={[-12.06, -77.02]} zoom={13} scrollWheelZoom={false}>
@@ -15,6 +32,7 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <MapActions />
         {/* Marcador estático */}
         {/* <Marker position={[-12.06, -77.02]}>
           <Popup>
