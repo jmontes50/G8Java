@@ -1,11 +1,31 @@
-import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  TileLayer,
+  Popup,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
 
 const Map = () => {
   return (
-    <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-        
-    </MapContainer>
-  )
-}
+    <div className="w-full border-2 rounded h-[450px] my-4">
+      <MapContainer center={[-12.06, -77.02]} zoom={13} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {/* Marcador estático */}
+        {/* <Marker position={[-12.06, -77.02]}>
+          <Popup>
+            <h4 className="font-semibold text-green-600">
+              Contenido del marcador
+            </h4>
+          </Popup>
+        </Marker> */}
+      </MapContainer>
+    </div>
+  );
+};
 
-export default Map
+export default Map;
