@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const CustomCarousel = () => {
+  const [currentImg, setCurrentImg] = useState(0);
   const imgs = [
     {
       id: 1,
@@ -14,13 +15,41 @@ const CustomCarousel = () => {
     },
   ];
 
-  return <div className="w-full h-[600px] rounded-2xl overflow-hidden">
-    {imgs.map((img) => (
-      <div className="w-full h-full" key={img.id}>
-        <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+  const previousImg = () => {
+    const newIndex = currentImg === 0 ? imgs.length - 1 : currentImg - 1;
+    setCurrentImg(newIndex);
+  };
+
+  const nextImg = () => {
+    const newIndex = currentImg === imgs.length - 1 ? 0 : currentImg + 1;
+    setCurrentImg(newIndex);
+  };
+
+  return (
+    <div className="w-full h-[600px] rounded-2xl overflow-hidden">
+      {/* {imgs.map((img) => ( */}
+      <div className="w-full h-full relative">
+        <img
+          src={imgs[currentImg].src}
+          alt={imgs[currentImg].label}
+          className="w-full h-full object-cover"
+        />
       </div>
-    ))}
-  </div>;
+      <button
+        className="btn btn-circle absolute left-8 top-1/2 -translate-y-1/2"
+        onClick={previousImg}
+      >
+        <i className="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        className="btn btn-circle absolute right-8 top-1/2 -translate-y-1/2"
+        onClick={nextImg}
+      >
+        <i className="fa-solid fa-chevron-right"></i>
+      </button>
+      {/* ))} */}
+    </div>
+  );
 };
 
 export default CustomCarousel;
