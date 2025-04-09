@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AnimatedLink from "../../ui/components/AnimatedLink";
 
 const ProductCard = ({ product }) => {
   const { id, nombre, imagen, descripcion } = product;
@@ -13,7 +14,7 @@ const ProductCard = ({ product }) => {
         <p>{descripcion}</p>
         <div className="card-actions justify-end">
           {/* <button className="btn btn-primary">Ver</button> */}
-          <Link to={`/productdetail/${id}`} className="btn btn-primary">Ver</Link>
+          <AnimatedLink to={`/productdetail/${id}`} className="btn btn-primary">Ver</AnimatedLink>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Navbar from "./modules/ui/components/Navbar";
 import ProductPage from "./modules/Products";
 import ProductDetailPage from "./modules/Products/ProductDetailPage";
 import CartPage from "./modules/Cart/CartPage";
+import Article from "./modules/Static/Article";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/" element={<ProductPage />} />
         <Route path="/productdetail/:id" element={<ProductDetailPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/article" element={<Article />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

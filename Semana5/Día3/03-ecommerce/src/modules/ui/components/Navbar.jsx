@@ -1,5 +1,6 @@
 import useThemeStore from "../../../stores/useThemeStore";
 import { Link } from "react-router-dom";
+import AnimatedLink from "./AnimatedLink";
 
 const Navbar = () => {
   const { theme, changeTheme } = useThemeStore();
@@ -7,14 +8,17 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
+        <AnimatedLink to="/" className="btn btn-ghost text-xl">
           Java's Store
-        </Link>
+        </AnimatedLink>
+        <AnimatedLink to="/article" className="btn btn-ghost btn-sm">
+          Article
+        </AnimatedLink>
       </div>
       <div className="flex-none">
-        <Link to="/cart" className="btn btn-square btn-sm fa-solid">
+        <AnimatedLink to="/cart" className="btn btn-square btn-sm fa-solid">
           <i className="fa-solid fa-cart-shopping fa-2x"></i>
-        </Link>
+        </AnimatedLink>
         <button className="btn btn-square btn-sm" onClick={changeTheme}>
           {theme === "light" ? (
             <i className="fa-solid fa-sun fa-2x"></i>
