@@ -14,8 +14,7 @@ const AnimatedLink = ({ to, children, ...rest }) => {
         navigate(to);
       });
     } else {
-      //Esto es para firefox
-      navigate(to);
+      navigate(to);//Esto es para firefox
     }
   };
 

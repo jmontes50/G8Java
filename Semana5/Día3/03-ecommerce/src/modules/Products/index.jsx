@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useGetAxios from "../../hooks/useGetAxios";
+import CustomCarousel from "./components/CustomCarousel";
 import ProductCard from "./components/ProductCard";
 import Loading from "../ui/components/Loading";
 import CategoryFilter from "./components/CategoryFilter";
@@ -34,6 +35,7 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto lg:container">
+      <CustomCarousel />
       <h1 className="text-3xl my-6">Catálogo</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="col-span-full flex justify-between">
