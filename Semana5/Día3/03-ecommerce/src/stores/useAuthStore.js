@@ -34,9 +34,11 @@ const useAuthStore = create(
           const { accessToken, user } = response.data;
           saveStorage("token", accessToken);
           set({ user, token: accessToken, isLogged: true }, false, "auth/Login");
-          toast.success(`Bienvenido ${user.name}!!`)
+          toast.success(`Bienvenido ${user.name}!!`);
         }
-      } catch (error) {}
+      } catch (error) {
+        toast.error("Hubo un error revise sus datos");
+      }
     },
     logout: () => {
       localStorage.removeItem("token");

@@ -11,7 +11,7 @@ const LoginPage = () => {
   const { login } = useAuthStore();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const { email, password } = data;
     login(email, password)
   };
