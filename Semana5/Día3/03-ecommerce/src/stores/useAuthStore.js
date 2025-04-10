@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { saveStorage, getStorage } from "../utils/localStorage";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const useAuthStore = create(
   devtools((set) => ({
@@ -33,6 +34,7 @@ const useAuthStore = create(
           const { accessToken, user } = response.data;
           saveStorage("token", accessToken);
           set({ user, token: accessToken, isLogged: true }, false, "auth/Login");
+          toast.success(`Bienvenido ${user.name}!!`)
         }
       } catch (error) {}
     },
