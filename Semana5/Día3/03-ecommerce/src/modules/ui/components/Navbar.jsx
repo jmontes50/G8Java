@@ -6,7 +6,7 @@ import useAuthStore from "../../../stores/useAuthStore";
 const Navbar = () => {
   const { theme, changeTheme } = useThemeStore();
 
-  const { logout } = useAuthStore();
+  const { logout, isLogged, user } = useAuthStore();
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -19,12 +19,20 @@ const Navbar = () => {
         </AnimatedLink>
       </div>
       <div className="flex-none flex gap-2 items-center">
-        <button className="btn btn-sm btn-info" onClick={logout}>
-          Cerrar sesión
-        </button>
-        <AnimatedLink to="/cart" className="btn btn-square btn-sm fa-solid">
-          <i className="fa-solid fa-cart-shopping fa-2x"></i>
-        </AnimatedLink>
+        {isLogged ? (
+          <>
+            <button className="btn btn-sm btn-info" onClick={logout}>
+              Cerrar sesión {user.name}
+            </button>
+            <AnimatedLink to="/cart" className="btn btn-square btn-sm fa-solid">
+              <i className="fa-solid fa-cart-shopping fa-2x"></i>
+            </AnimatedLink>
+          </>
+        ) : (
+          <AnimatedLink to="/login" className="btn btn-info btn-sm">
+            Ingresa!
+          </AnimatedLink>
+        )}
         <button className="btn btn-square btn-sm" onClick={changeTheme}>
           {theme === "light" ? (
             <i className="fa-solid fa-sun fa-2x"></i>
