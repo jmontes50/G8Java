@@ -22,7 +22,7 @@ const Navbar = () => {
         {isLogged ? (
           <>
             <button className="btn btn-sm btn-info" onClick={logout}>
-              Cerrar sesión {user.name}
+              Cerrar sesión {user.name || user.email}
             </button>
             <AnimatedLink to="/cart" className="btn btn-square btn-sm fa-solid">
               <i className="fa-solid fa-cart-shopping fa-2x"></i>
