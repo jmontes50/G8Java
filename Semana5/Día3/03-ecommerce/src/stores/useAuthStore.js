@@ -32,13 +32,15 @@ const useAuthStore = create(
          */
           const { accessToken, user } = response.data;
           saveStorage("token", accessToken);
-          set({ user, token: accessToken, isLogged: true });
+          set({ user, token: accessToken, isLogged: true }, false, "auth/Login");
         }
       } catch (error) {}
     },
     logout: () => {
       localStorage.removeItem("token");
-      set({ token: null, isLogged: false, user: null });
+      set({ token: null, isLogged: false, user: null }, false, "auth/Logout");
     },
   }))
 );
+
+export default useAuthStore;
