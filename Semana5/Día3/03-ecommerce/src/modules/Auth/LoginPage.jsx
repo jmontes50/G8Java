@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useAuthStore from "../../stores/useAuthStore";
 import { useNavigate } from "react-router-dom";
@@ -9,16 +10,23 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  const { login } = useAuthStore();
+  const { login, isLogged } = useAuthStore();
 
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
     // console.log(data);
     const { email, password } = data;
-    const goToHome = () => navigate('/');
-    login(email, password, goToHome);
+    // const goToHome = () => navigate('/');
+    // login(email, password, goToHome);
+    login(email, password);
   };
+
+  useEffect(() => {
+    if(isLogged) {
+      navigate('/')
+    }
+  },[isLogged])
 
   return (
     <div className="w-full max-h-screen grid grid-cols-1 lg:grid-cols-2">
