@@ -3,6 +3,7 @@ import { devtools } from "zustand/middleware";
 import { saveStorage, getStorage } from "../utils/localStorage";
 import axios from "axios";
 import { toast } from "react-toastify";
+import getTimeExpToken from "../utils/jwt";
 
 const useAuthStore = create(
   devtools((set) => ({
@@ -11,7 +12,7 @@ const useAuthStore = create(
     isLogged: false,
 
     // login: async (email, password, callback) => {
-      login: async (email, password) => {
+    login: async (email, password) => {
       try {
         const user = {
           email,
@@ -34,7 +35,12 @@ const useAuthStore = create(
          */
           const { accessToken, user } = response.data;
           saveStorage("token", accessToken);
-          set({ user, token: accessToken, isLogged: true }, false, "auth/Login");
+          // getTimeExpToken(accessToken);
+          set(
+            { user, token: accessToken, isLogged: true },
+            false,
+            "auth/Login"
+          );
           toast.success(`Bienvenido ${user.name}!!`);
           // callback();
         }
@@ -46,6 +52,43 @@ const useAuthStore = create(
       localStorage.removeItem("token");
       set({ token: null, isLogged: false, user: null }, false, "auth/Logout");
       toast.info("Sesión cerrada");
+    },
+    verifyAuth: () => {
+      const token = getStorage("token");
+      if (!token) return;
+
+      try {
+        const isTokenValid = getTimeExpToken(accessToken);
+
+        if (isTokenValid) {
+          set(
+            {
+              token,
+              isLogged: true,
+              user: {
+                name: "user",
+                email: null,
+              },
+            },
+            false,
+            "auth/verifyAuth"
+          );
+        } else {
+          localStorage.removeItem("token");
+          set(
+            { token: null, isLogged: false, user: null },
+            false,
+            "auth/verifyAuth"
+          );
+        }
+      } catch (error) {
+        localStorage.removeItem("token");
+          set(
+            { token: null, isLogged: false, user: null },
+            false,
+            "auth/verifyAuth"
+          );
+      }
     },
   }))
 );
