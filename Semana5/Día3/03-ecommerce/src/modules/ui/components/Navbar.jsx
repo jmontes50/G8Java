@@ -1,9 +1,12 @@
 import useThemeStore from "../../../stores/useThemeStore";
 import { Link } from "react-router-dom";
 import AnimatedLink from "./AnimatedLink";
+import useAuthStore from "../../../stores/useAuthStore";
 
 const Navbar = () => {
   const { theme, changeTheme } = useThemeStore();
+
+  const { logout } = useAuthStore();
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -15,7 +18,10 @@ const Navbar = () => {
           Article
         </AnimatedLink>
       </div>
-      <div className="flex-none">
+      <div className="flex-none flex gap-2 items-center">
+        <button className="btn btn-sm btn-info" onClick={logout}>
+          Cerrar sesión
+        </button>
         <AnimatedLink to="/cart" className="btn btn-square btn-sm fa-solid">
           <i className="fa-solid fa-cart-shopping fa-2x"></i>
         </AnimatedLink>

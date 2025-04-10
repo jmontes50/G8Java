@@ -42,7 +42,7 @@ const LoginPage = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="w-full h-full flex justify-center items-center"
         >
-          <div className="w-[400px] border-2 rounded p-4">
+          <div className="w-[400px] border-2 rounded p-4 mt-20 md:mt-0">
             <h4 className="font-bold text-xl">Login</h4>
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Correo:</legend>

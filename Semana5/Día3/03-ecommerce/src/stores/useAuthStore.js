@@ -45,6 +45,7 @@ const useAuthStore = create(
     logout: () => {
       localStorage.removeItem("token");
       set({ token: null, isLogged: false, user: null }, false, "auth/Logout");
+      toast.info("Sesión cerrada");
     },
   }))
 );
