@@ -10,7 +10,7 @@ const useAuthStore = create(
     token: null, //jwt
     isLogged: false,
 
-    login: async (email, password) => {
+    login: async (email, password, callback) => {
       try {
         const user = {
           email,
@@ -35,6 +35,7 @@ const useAuthStore = create(
           saveStorage("token", accessToken);
           set({ user, token: accessToken, isLogged: true }, false, "auth/Login");
           toast.success(`Bienvenido ${user.name}!!`);
+          callback();
         }
       } catch (error) {
         toast.error("Hubo un error revise sus datos");
