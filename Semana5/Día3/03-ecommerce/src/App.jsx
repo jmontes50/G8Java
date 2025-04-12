@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import useAuthStore from "./stores/useAuthStore";
 import Navbar from "./modules/ui/components/Navbar";
 import ProtectedRoute from "./modules/Auth/components/ProtectedRoute";
 import ProductPage from "./modules/Products";
@@ -9,6 +11,12 @@ import Article from "./modules/Static/Article";
 import LoginPage from "./modules/Auth/LoginPage";
 
 const App = () => {
+  const { verifyAuth } = useAuthStore();
+
+  useEffect(() => {
+    verifyAuth();
+  }, [])
+
   return (
     <BrowserRouter>
       <Navbar />

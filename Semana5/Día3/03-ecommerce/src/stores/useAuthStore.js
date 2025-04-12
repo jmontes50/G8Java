@@ -58,8 +58,7 @@ const useAuthStore = create(
       if (!token) return;
 
       try {
-        const isTokenValid = getTimeExpToken(accessToken);
-
+        const isTokenValid = getTimeExpToken(token);
         if (isTokenValid) {
           set(
             {
@@ -82,6 +81,7 @@ const useAuthStore = create(
           );
         }
       } catch (error) {
+        console.log(error);
         localStorage.removeItem("token");
           set(
             { token: null, isLogged: false, user: null },
