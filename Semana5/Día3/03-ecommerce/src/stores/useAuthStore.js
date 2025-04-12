@@ -58,15 +58,15 @@ const useAuthStore = create(
       if (!token) return;
 
       try {
-        const isTokenValid = getTimeExpToken(token);
+        const { isTokenValid, email } = getTimeExpToken(token);
         if (isTokenValid) {
           set(
             {
               token,
               isLogged: true,
               user: {
-                name: "user",
-                email: null,
+                name: null,
+                email: email,
               },
             },
             false,
